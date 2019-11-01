@@ -396,7 +396,7 @@
     
         <p>티스토리에 포스팅을 다시 가지고 왔습니다.</p>
 <h2 id="Oracle-컬럼-속성-추가-삭제"><a href="#Oracle-컬럼-속성-추가-삭제" class="headerlink" title="- Oracle 컬럼 속성 추가 삭제"></a>- Oracle 컬럼 속성 추가 삭제</h2><p>Oracle DB 사용할 때 이상하게도 매번 찾아보게 되는 컬럼 추가 삭제</p>
-<h2 id="9"><a href="#9" class="headerlink" title="9"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
+<h2 id="31"><a href="#31" class="headerlink" title="31"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&amp; : &amp;amp;</span><br><span class="line">&lt; : &amp;lt;</span><br><span class="line">&gt; : &amp;gt;</span><br><span class="line">‘ : &amp;apos;</span><br><span class="line">” : &amp;quot;</span><br><span class="line">엔터 : &amp;#10;</span><br></pre></td></tr></table></figure></p>
 <h2 id="ORACLE-ORA-01861-literal-does-not-match-format-string"><a href="#ORACLE-ORA-01861-literal-does-not-match-format-string" class="headerlink" title="- ORACLE ORA-01861: literal does not match format string"></a>- ORACLE ORA-01861: literal does not match format string</h2><p><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ORACLE DATE 컬럼을 문자로 조회시 자주 발생하는 에러</span><br><span class="line"></span><br><span class="line">조건절에 좌변의 DATE 객채를 TO_CAHR 포맷으로 CAST </span><br><span class="line"></span><br><span class="line">예) TO_CHAR(컬럼, 'YYYYMMDD')</span><br></pre></td></tr></table></figure></p>
 <h2 id="채번하기-자릿수-LPAD-SEQUENCE"><a href="#채번하기-자릿수-LPAD-SEQUENCE" class="headerlink" title="- 채번하기 자릿수 LPAD, SEQUENCE"></a>- 채번하기 자릿수 LPAD, SEQUENCE</h2><p> 수동으로 채번 할때 많이 사용한다.</p>
@@ -464,47 +464,6 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/11/01/old/2019-03-29-GitlabServer/" itemprop="url">Gitlab 설치하기(Docker on Mac)</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.174Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Github와 Gitlab 모두 클라우드를 지원하고 있다.<br>다른 설치 없이 가입 레파지토리 생성을 통해 사용할 수 있다.</p>
-<p>자체적으로 Git을 관리하고 있던 것을 서버로 관리하고 코드리뷰를<br>원할하게 하고 싶은 욕구가 생겨서 Gitlab을 설치하고자 했다.</p>
-<p>Gitlab <a href="https://docs.gitlab.com/runner/install/osx.html" target="_blank" rel="noopener">공식 홈페이지</a> 에서 가이드를 제공하고 있다.</p>
-<p>하지만 정상적으로 작동되지 않았다. 현재 사용하고 있는 개발 서버가 맥이기 때문일지도 모르겠지만 다른 방법을 서칭해서 Docker에 gitlab을 설치 하는 방법으로 전환하였다.</p>
-<p>Docker 는 <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">이곳</a> 에서 다운 받아 설치할 수 있다.<br>가입과 로그인은 개별적으로 하자.</p>
-<p>다음과 같이 커멘드를 수행한다.</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach --name gitlab \</span><br><span class="line">    --hostname gitlab.local \</span><br><span class="line">    --publish 30000:30000 \</span><br><span class="line">    --publish 30001:22 \</span><br><span class="line">    --env GITLAB_OMNIBUS_CONFIG=&quot;external_url &apos;http://gitlab.local:30000&apos;;          </span><br><span class="line">    gitlab_rails[&apos;gitlab_shell_ssh_port&apos;]=30000;&quot; \</span><br><span class="line">    gitlab/gitlab-ce:9.1.0-ce.0</span><br></pre></td></tr></table></figure></p>
-<p>publish port 와 external_url 은 개인에 맞게 설정하자.</p>
-<p>해당 커멘드가 오류 없이 수행되면 docker images에 gitlab서버가 수행 중일 것이다.  </p>
-<p><a href="http://gitlab.local:30000" target="_blank" rel="noopener">http://gitlab.local:30000</a> 에 접속하면 깃렙 로그인 화면을 확인할 수 있다.</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
             <a href="/2019/11/01/old/2019-06-12-javaIPAdress/" itemprop="url">Java IP address 사용하기</a>
         
     </h1>
@@ -529,6 +488,41 @@
 <p><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">String ip= <span class="hljs-string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">try</span> &#123;</span><br><span class="line">    Enumeration&lt;NetworkInterface&gt; nienum = NetworkInterface.getNetworkInterfaces();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (nienum.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">        NetworkInterface ni = nienum.nextElement();</span><br><span class="line"></span><br><span class="line">        Enumeration&lt;InetAddress&gt; kk= ni.getInetAddresses();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (kk.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">            InetAddress inetAddress = kk.nextElement();</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">if</span> (!inetAddress.isLoopbackAddress() &amp;&amp;</span><br><span class="line"></span><br><span class="line">                    !inetAddress.isLinkLocalAddress() &amp;&amp;</span><br><span class="line"></span><br><span class="line">                    inetAddress.isSiteLocalAddress()) &#123;</span><br><span class="line"></span><br><span class="line">                ip = inetAddress.getHostAddress().toString();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="hljs-keyword">catch</span> (SocketException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>위의 코드로 IP를 호출하면 정상적으로 로컬의 주소를 가져올 수 있습니다.</p>
 <h2 id="4-추가"><a href="#4-추가" class="headerlink" title="4. 추가"></a>4. 추가</h2><p>IPv4 와 IPv6 할당의 차이인지는 확인이 필요합니다.</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-05-29-HTML/" itemprop="url">HTML</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.168Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h3 id="HyperText-Markup-Language"><a href="#HyperText-Markup-Language" class="headerlink" title="HyperText Markup Language"></a>HyperText Markup Language</h3><p> HTML은 제목, 단락, 목록 등과 같은 본문을 위한 구조적 의미를 나타내는 것뿐만 아니라 링크, 인용과 그 밖의 항목으로 구조적 문서를 만들 수 있는 방법을 제공한다. 그리고 이미지와 객체를 내장하고 대화형 양식을 생성하는 데 사용될 수 있다. HTML은 웹 페이지 콘텐츠 안의 꺾쇠 괄호에 둘러싸인 “태그”로 되어있는 HTML 요소 형태로 작성한다. (<a href="https://ko.wikipedia.org/wiki/HTML" target="_blank" rel="noopener">WIKI 참조</a>)</p>
+<p>htm</p>
+<p><a href="http://www.99lime.com/_bak/topics/you-only-need-10-tags/" target="_blank" rel="noopener">You Only Need 10 HTML Tags</a> 라는 페이지가 있다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt; - &lt;h6&gt;	Heading</span><br><span class="line">&lt;p&gt;	        Paragraph</span><br><span class="line">&lt;i&gt;	        Italic</span><br><span class="line">&lt;b&gt;	        Bold</span><br><span class="line">&lt;a&gt;	        Anchor</span><br><span class="line">&lt;ul&gt; &amp; &lt;li&gt;	Unordered List &amp; List Item</span><br><span class="line">&lt;blockquote&gt;    Blockquote</span><br><span class="line">&lt;hr&gt;	        Horizontal Rule</span><br><span class="line">&lt;img&gt;	        Image</span><br><span class="line">&lt;div&gt;	        Division</span><br></pre></td></tr></table></figure></p>
+<p>샘플 페이지에 들어가면 이 태그만으로도 충분히 웹의 기본적인 레이아웃을 구성할 수 있음을 보여준다.  </p>
 
     
     </div>

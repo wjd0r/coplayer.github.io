@@ -114,6 +114,47 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2019/11/01/old/2019-03-29-GitlabServer/" itemprop="url">Gitlab 설치하기(Docker on Mac)</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:48:54.187Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Technology/">Technology</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>Github와 Gitlab 모두 클라우드를 지원하고 있다.<br>다른 설치 없이 가입 레파지토리 생성을 통해 사용할 수 있다.</p>
+<p>자체적으로 Git을 관리하고 있던 것을 서버로 관리하고 코드리뷰를<br>원할하게 하고 싶은 욕구가 생겨서 Gitlab을 설치하고자 했다.</p>
+<p>Gitlab <a href="https://docs.gitlab.com/runner/install/osx.html" target="_blank" rel="noopener">공식 홈페이지</a> 에서 가이드를 제공하고 있다.</p>
+<p>하지만 정상적으로 작동되지 않았다. 현재 사용하고 있는 개발 서버가 맥이기 때문일지도 모르겠지만 다른 방법을 서칭해서 Docker에 gitlab을 설치 하는 방법으로 전환하였다.</p>
+<p>Docker 는 <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">이곳</a> 에서 다운 받아 설치할 수 있다.<br>가입과 로그인은 개별적으로 하자.</p>
+<p>다음과 같이 커멘드를 수행한다.</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach --name gitlab \</span><br><span class="line">    --hostname gitlab.local \</span><br><span class="line">    --publish 30000:30000 \</span><br><span class="line">    --publish 30001:22 \</span><br><span class="line">    --env GITLAB_OMNIBUS_CONFIG=&quot;external_url &apos;http://gitlab.local:30000&apos;;          </span><br><span class="line">    gitlab_rails[&apos;gitlab_shell_ssh_port&apos;]=30000;&quot; \</span><br><span class="line">    gitlab/gitlab-ce:9.1.0-ce.0</span><br></pre></td></tr></table></figure></p>
+<p>publish port 와 external_url 은 개인에 맞게 설정하자.</p>
+<p>해당 커멘드가 오류 없이 수행되면 docker images에 gitlab서버가 수행 중일 것이다.  </p>
+<p><a href="http://gitlab.local:30000" target="_blank" rel="noopener">http://gitlab.local:30000</a> 에 접속하면 깃렙 로그인 화면을 확인할 수 있다.</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2019/11/01/old/2019-07-09-intellijTomcatConfig/" itemprop="url">Intellij Tomcat 로그 한글깨짐 현상 </a>
         
     </h1>
@@ -389,7 +430,7 @@
     
         <p>티스토리에 포스팅을 다시 가지고 왔습니다.</p>
 <h2 id="Oracle-컬럼-속성-추가-삭제"><a href="#Oracle-컬럼-속성-추가-삭제" class="headerlink" title="- Oracle 컬럼 속성 추가 삭제"></a>- Oracle 컬럼 속성 추가 삭제</h2><p>Oracle DB 사용할 때 이상하게도 매번 찾아보게 되는 컬럼 추가 삭제</p>
-<h2 id="9"><a href="#9" class="headerlink" title="9"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
+<h2 id="31"><a href="#31" class="headerlink" title="31"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&amp; : &amp;amp;</span><br><span class="line">&lt; : &amp;lt;</span><br><span class="line">&gt; : &amp;gt;</span><br><span class="line">‘ : &amp;apos;</span><br><span class="line">” : &amp;quot;</span><br><span class="line">엔터 : &amp;#10;</span><br></pre></td></tr></table></figure></p>
 <h2 id="ORACLE-ORA-01861-literal-does-not-match-format-string"><a href="#ORACLE-ORA-01861-literal-does-not-match-format-string" class="headerlink" title="- ORACLE ORA-01861: literal does not match format string"></a>- ORACLE ORA-01861: literal does not match format string</h2><p><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ORACLE DATE 컬럼을 문자로 조회시 자주 발생하는 에러</span><br><span class="line"></span><br><span class="line">조건절에 좌변의 DATE 객채를 TO_CAHR 포맷으로 CAST </span><br><span class="line"></span><br><span class="line">예) TO_CHAR(컬럼, 'YYYYMMDD')</span><br></pre></td></tr></table></figure></p>
 <h2 id="채번하기-자릿수-LPAD-SEQUENCE"><a href="#채번하기-자릿수-LPAD-SEQUENCE" class="headerlink" title="- 채번하기 자릿수 LPAD, SEQUENCE"></a>- 채번하기 자릿수 LPAD, SEQUENCE</h2><p> 수동으로 채번 할때 많이 사용한다.</p>
@@ -443,47 +484,6 @@
 <h3 id="5-git-의-remote-설정을-진행합니다"><a href="#5-git-의-remote-설정을-진행합니다" class="headerlink" title="5. git 의 remote 설정을 진행합니다."></a>5. git 의 remote 설정을 진행합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin 프로젝트git주소</span><br></pre></td></tr></table></figure><br> remote 설정</p>
 <h3 id="6-git-push"><a href="#6-git-push" class="headerlink" title="6. git push"></a>6. git push</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure><br> 정상적으로 remote에 소스가 push 되었는지 확인합니다.</p>
 <p>위 과정을 통해서 간단하게 svn으로 관리하는 소스를 git이로 이관하여 관리할 수 있습니다.</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2019-03-29-GitlabServer/" itemprop="url">Gitlab 설치하기(Docker on Mac)</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.174Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Github와 Gitlab 모두 클라우드를 지원하고 있다.<br>다른 설치 없이 가입 레파지토리 생성을 통해 사용할 수 있다.</p>
-<p>자체적으로 Git을 관리하고 있던 것을 서버로 관리하고 코드리뷰를<br>원할하게 하고 싶은 욕구가 생겨서 Gitlab을 설치하고자 했다.</p>
-<p>Gitlab <a href="https://docs.gitlab.com/runner/install/osx.html" target="_blank" rel="noopener">공식 홈페이지</a> 에서 가이드를 제공하고 있다.</p>
-<p>하지만 정상적으로 작동되지 않았다. 현재 사용하고 있는 개발 서버가 맥이기 때문일지도 모르겠지만 다른 방법을 서칭해서 Docker에 gitlab을 설치 하는 방법으로 전환하였다.</p>
-<p>Docker 는 <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">이곳</a> 에서 다운 받아 설치할 수 있다.<br>가입과 로그인은 개별적으로 하자.</p>
-<p>다음과 같이 커멘드를 수행한다.</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach --name gitlab \</span><br><span class="line">    --hostname gitlab.local \</span><br><span class="line">    --publish 30000:30000 \</span><br><span class="line">    --publish 30001:22 \</span><br><span class="line">    --env GITLAB_OMNIBUS_CONFIG=&quot;external_url &apos;http://gitlab.local:30000&apos;;          </span><br><span class="line">    gitlab_rails[&apos;gitlab_shell_ssh_port&apos;]=30000;&quot; \</span><br><span class="line">    gitlab/gitlab-ce:9.1.0-ce.0</span><br></pre></td></tr></table></figure></p>
-<p>publish port 와 external_url 은 개인에 맞게 설정하자.</p>
-<p>해당 커멘드가 오류 없이 수행되면 docker images에 gitlab서버가 수행 중일 것이다.  </p>
-<p><a href="http://gitlab.local:30000" target="_blank" rel="noopener">http://gitlab.local:30000</a> 에 접속하면 깃렙 로그인 화면을 확인할 수 있다.</p>
 
     
     </div>

@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>SVN 을 GIT 으로 이관하기 (git svn) - Ethan Blog</title>
+<title>Category: Technology - Ethan Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -78,7 +78,7 @@
             <a class="navbar-item "
                href="/categories/LifeStyle">Lifestyle</a>
             
-            <a class="navbar-item "
+            <a class="navbar-item is-active"
                href="/categories/Technology">Technology</a>
             
             <a class="navbar-item "
@@ -96,50 +96,6 @@
             </a>
             
             
-            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
-                <a class="navbar-item" title="Table of Contents">
-                    <i class="fa fa-list"></i>
-                </a>
-                <div class="navbar-dropdown is-right">
-                    
-                    
-                    
-                    
-                    <a class="navbar-item" href="#1-git-svn-설치-합니다">1&nbsp;&nbsp;<b>1. git-svn 설치 합니다.</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#2-이관하기-위한-환경이-되었는지를-확인합니다">2&nbsp;&nbsp;<b>2. 이관하기 위한 환경이 되었는지를 확인합니다.</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#3-svn-소스를-git-의-형태로-clone-합니다">3&nbsp;&nbsp;<b>3. svn 소스를 git 의 형태로 clone 합니다.</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#4-git-서버-repository를-생성합니다">4&nbsp;&nbsp;<b>4. git 서버 repository를 생성합니다.</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#5-git-의-remote-설정을-진행합니다">5&nbsp;&nbsp;<b>5. git 의 remote 설정을 진행합니다.</b></a>
-                    
-                    
-                    <hr class="navbar-divider">
-                    
-                    
-                    <a class="navbar-item" href="#6-git-push">6&nbsp;&nbsp;<b>6. git push</b></a>
-                    
-                </div>
-            </div>
-            
             
             <a class="navbar-item" title="GitHub" href="https://github.com/coplayer" target="_blank" rel="noopener">
                 
@@ -152,69 +108,58 @@
     </div>
 </nav>
 
-    <section class="section">
+    <section class="section section-heading">
     <div class="container">
-    <article class="article content gallery" itemscope itemprop="blogPost">
+        <div class="content">
+            <h5><i class="far fa-folder"></i>Technology</h5>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            SVN 을 GIT 으로 이관하기 (git svn)
+            <a href="/2019/11/01/old/2019-03-29-GitlabServer/" itemprop="url">Gitlab 설치하기(Docker on Mac)</a>
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.176Z" itemprop="datePublished">Nov 1 2019</time>
+            <time datetime="2019-11-01T05:48:54.187Z" itemprop="datePublished">Nov 1 2019</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
+            <a class="article-category-link" href="/categories/Technology/">Technology</a>
         </span>
         
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>SVN 으로 형상관리 하던 소스를 GIT으로 이전하기 위해서 포스팅을 정리해 봅니다.</p>
-<p>SVN을 오래 동안 써 왔고 큰 어려움이 없이 사용해 왔습니다.  </p>
-<p>단일 프로젝트를 주로 진행해 왔고 모듈을 나눠서 개발하다보면 GIT의 필요성을<br>그다지 느끼기 어렵다고 생각합니다.</p>
-<p>하지만 운영 되고 있는 서비스를 각각의 개발자가 신규 개발과 오류 수정하면서<br>코드를 리펙토링 하기위한 활동 또는 신규 테스트를 위해서는 형상 관리의 유연성과 통합이 쉽게 이루어 져야 합니다.</p>
-<p>비슷한 기능은 svn에서도 가능합니다.<br>다만 같은 기능을 하더라도 빠르고 유연한 대처가 가능하다고 말씀 드리고 싶습니다.<br>해당 포스팅은 svn 과 git은 설치 되었다는 전제로 진행합니다.</p>
-<h3 id="1-git-svn-설치-합니다"><a href="#1-git-svn-설치-합니다" class="headerlink" title="1. git-svn 설치 합니다."></a>1. git-svn 설치 합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-svn</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-이관하기-위한-환경이-되었는지를-확인합니다"><a href="#2-이관하기-위한-환경이-되었는지를-확인합니다" class="headerlink" title="2. 이관하기 위한 환경이 되었는지를 확인합니다."></a>2. 이관하기 위한 환경이 되었는지를 확인합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://bitbucket.org/atlassian/svn-migration-scripts/src</span><br></pre></td></tr></table></figure><br> 사이트에서 다운받기<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -jar svn-migration-scripts.jar verify</span><br></pre></td></tr></table></figure><br> 명령어로 확인합니다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Git: using version </span><br><span class="line">Subversion: using version</span><br><span class="line">git-svn: using version</span><br></pre></td></tr></table></figure><br> 준비된 상태이면 위와 같은 출력이 설치된 버전에 따라 보입니다.</p>
-<h3 id="3-svn-소스를-git-의-형태로-clone-합니다"><a href="#3-svn-소스를-git-의-형태로-clone-합니다" class="headerlink" title="3. svn 소스를 git 의 형태로 clone 합니다."></a>3. svn 소스를 git 의 형태로 clone 합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git svn clone 프로젝트svn주소 --no-metadata  프로젝트이름</span><br></pre></td></tr></table></figure><br> 이 과정 전에 다른 포스팅들에서는 사용자정보를 git 형태로 변환하는 과정들이 있습니다.<br> 과정 중에 큰 이슈가 발생하지 않아 그대로 진행 했습니다.<br><a href="http://lux.cuenet.kr/21" target="_blank" rel="noopener">참고 페이지 링크 </a></p>
-<h3 id="4-git-서버-repository를-생성합니다"><a href="#4-git-서버-repository를-생성합니다" class="headerlink" title="4. git 서버 repository를 생성합니다."></a>4. git 서버 repository를 생성합니다.</h3><p> git 서버에 .git 폴더를 생성하고 다음 명령어를 수행하여 레파지토리로 생성합니다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --bare init</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-git-의-remote-설정을-진행합니다"><a href="#5-git-의-remote-설정을-진행합니다" class="headerlink" title="5. git 의 remote 설정을 진행합니다."></a>5. git 의 remote 설정을 진행합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin 프로젝트git주소</span><br></pre></td></tr></table></figure><br> remote 설정</p>
-<h3 id="6-git-push"><a href="#6-git-push" class="headerlink" title="6. git push"></a>6. git push</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure><br> 정상적으로 remote에 소스가 push 되었는지 확인합니다.</p>
-<p>위 과정을 통해서 간단하게 svn으로 관리하는 소스를 git이로 이관하여 관리할 수 있습니다.</p>
+        <p>Github와 Gitlab 모두 클라우드를 지원하고 있다.<br>다른 설치 없이 가입 레파지토리 생성을 통해 사용할 수 있다.</p>
+<p>자체적으로 Git을 관리하고 있던 것을 서버로 관리하고 코드리뷰를<br>원할하게 하고 싶은 욕구가 생겨서 Gitlab을 설치하고자 했다.</p>
+<p>Gitlab <a href="https://docs.gitlab.com/runner/install/osx.html" target="_blank" rel="noopener">공식 홈페이지</a> 에서 가이드를 제공하고 있다.</p>
+<p>하지만 정상적으로 작동되지 않았다. 현재 사용하고 있는 개발 서버가 맥이기 때문일지도 모르겠지만 다른 방법을 서칭해서 Docker에 gitlab을 설치 하는 방법으로 전환하였다.</p>
+<p>Docker 는 <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">이곳</a> 에서 다운 받아 설치할 수 있다.<br>가입과 로그인은 개별적으로 하자.</p>
+<p>다음과 같이 커멘드를 수행한다.</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach --name gitlab \</span><br><span class="line">    --hostname gitlab.local \</span><br><span class="line">    --publish 30000:30000 \</span><br><span class="line">    --publish 30001:22 \</span><br><span class="line">    --env GITLAB_OMNIBUS_CONFIG=&quot;external_url &apos;http://gitlab.local:30000&apos;;          </span><br><span class="line">    gitlab_rails[&apos;gitlab_shell_ssh_port&apos;]=30000;&quot; \</span><br><span class="line">    gitlab/gitlab-ce:9.1.0-ce.0</span><br></pre></td></tr></table></figure></p>
+<p>publish port 와 external_url 은 개인에 맞게 설정하자.</p>
+<p>해당 커멘드가 오류 없이 수행되면 docker images에 gitlab서버가 수행 중일 것이다.  </p>
+<p><a href="http://gitlab.local:30000" target="_blank" rel="noopener">http://gitlab.local:30000</a> 에 접속하면 깃렙 로그인 화면을 확인할 수 있다.</p>
 
     
     </div>
     
-    <div class="columns is-variable is-1 is-multiline is-mobile">
-    
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/develop/">#develop</a></span>
-    
-    </div>
-    
-    
-    <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2019/11/01/old/2018-06-01-oracleTip/">Oracle 명령어 및 TIP </a>
-            
-        </span>
-        <span class="column is-12-mobile is-half-desktop  article-nav-next">
-            
-            <a href="/2019/11/01/old/2019-06-12-javaIPAdress/">Java IP address 사용하기</a>
-            
-        </span>
-    </div>
     
 </article>
 
 
 
 
+    
+    
     </div>
 </section>
     <footer class="footer">
