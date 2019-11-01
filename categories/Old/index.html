@@ -121,40 +121,6 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/11/01/old/2019-07-09-intellijTomcatConfig/" itemprop="url">Intellij Tomcat 로그 한글깨짐 현상 </a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.192Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Intellij 의 tomcat 로그 중 한글이 깨지는 현상 </p>
-<p>Intellij의 오른쪽 상단 Editconfiguration<br>Configuration 의 VM options에 다음 코드 추가</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure></p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
             <a href="/2019/11/01/old/2018-06-07-iterator/" itemprop="url">Iterator Pattern</a>
         
     </h1>
@@ -182,42 +148,6 @@
 <ul>
 <li><a href="https://docs.oracle.com/javase/9/docs/api/java/util/Iterator.html" target="_blank" rel="noopener">JAVA DOC</a></li>
 </ul>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2019-06-13-gradleBuildErorr/" itemprop="url">Gradle Build 오류(javax.net.ssl.SSLException)</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.187Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Sprigboot 에서 Gradle 빌드 수행 </p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javax.net.ssl.SSLException:closing inbound before receiving peer&apos;s close_notify</span><br></pre></td></tr></table></figure></p>
-<p>데이터베이스에 SSL설정이 되어 있지 않아 Springboot gradle 빌드시 발생하는 오류라고 합니다.</p>
-<p>jdbc url 에 다음고 같이 옵션을 추가해 주면 빌드가 정상적으로 수행되는 것을 확인 하였습니다.</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ex) jdbc:myslq://localhost:3306?&amp;useSSL=false</span><br></pre></td></tr></table></figure></p>
 
     
     </div>
@@ -396,7 +326,7 @@
     
         <p>티스토리에 포스팅을 다시 가지고 왔습니다.</p>
 <h2 id="Oracle-컬럼-속성-추가-삭제"><a href="#Oracle-컬럼-속성-추가-삭제" class="headerlink" title="- Oracle 컬럼 속성 추가 삭제"></a>- Oracle 컬럼 속성 추가 삭제</h2><p>Oracle DB 사용할 때 이상하게도 매번 찾아보게 되는 컬럼 추가 삭제</p>
-<h2 id="31"><a href="#31" class="headerlink" title="31"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
+<h2 id="18"><a href="#18" class="headerlink" title="18"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&amp; : &amp;amp;</span><br><span class="line">&lt; : &amp;lt;</span><br><span class="line">&gt; : &amp;gt;</span><br><span class="line">‘ : &amp;apos;</span><br><span class="line">” : &amp;quot;</span><br><span class="line">엔터 : &amp;#10;</span><br></pre></td></tr></table></figure></p>
 <h2 id="ORACLE-ORA-01861-literal-does-not-match-format-string"><a href="#ORACLE-ORA-01861-literal-does-not-match-format-string" class="headerlink" title="- ORACLE ORA-01861: literal does not match format string"></a>- ORACLE ORA-01861: literal does not match format string</h2><p><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ORACLE DATE 컬럼을 문자로 조회시 자주 발생하는 에러</span><br><span class="line"></span><br><span class="line">조건절에 좌변의 DATE 객채를 TO_CAHR 포맷으로 CAST </span><br><span class="line"></span><br><span class="line">예) TO_CHAR(컬럼, 'YYYYMMDD')</span><br></pre></td></tr></table></figure></p>
 <h2 id="채번하기-자릿수-LPAD-SEQUENCE"><a href="#채번하기-자릿수-LPAD-SEQUENCE" class="headerlink" title="- 채번하기 자릿수 LPAD, SEQUENCE"></a>- 채번하기 자릿수 LPAD, SEQUENCE</h2><p> 수동으로 채번 할때 많이 사용한다.</p>
@@ -464,44 +394,6 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/11/01/old/2019-06-12-javaIPAdress/" itemprop="url">Java IP address 사용하기</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.170Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <h2 id="1-인지"><a href="#1-인지" class="headerlink" title="1. 인지"></a>1. 인지</h2><p>각각 REST api 개발을 하다보면 개발환경의 IP 주소를 동적으로 할당하여 사용해야 하는 경우가 대부분입니다. 각 개발자들의 개발환경에 맞는 아이피가 할당되도록 프로그램을 수정하던 도중에 사용한 클래스에서 이상한 아이피가 할당되는 것을 확인하게 되었습니다.</p>
-<h2 id="2-분석"><a href="#2-분석" class="headerlink" title="2. 분석"></a>2. 분석</h2><p>InetAddress 내부를 살펴보면 호스트네임이 “localhost” 일때 정확한 IP를 리턴 하도록 구현되어 있습니다. 유닉스와 리눅스 계열에서 네임이 사용자에 따라 동적으로 바뀌면서 IP가 제대로 할당되지 않는 것이 었습니다.</p>
-<p><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String ip = <span class="hljs-string">""</span>;</span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    ip = InetAddress.getLocalHost().getHostAddress();</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(UnknownHostException e)&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-해결"><a href="#3-해결" class="headerlink" title="3. 해결"></a>3. 해결</h2><p>분석 이후 해결책을 구글링 하였습니다.</p>
-<p><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">String ip= <span class="hljs-string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">try</span> &#123;</span><br><span class="line">    Enumeration&lt;NetworkInterface&gt; nienum = NetworkInterface.getNetworkInterfaces();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (nienum.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">        NetworkInterface ni = nienum.nextElement();</span><br><span class="line"></span><br><span class="line">        Enumeration&lt;InetAddress&gt; kk= ni.getInetAddresses();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (kk.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">            InetAddress inetAddress = kk.nextElement();</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">if</span> (!inetAddress.isLoopbackAddress() &amp;&amp;</span><br><span class="line"></span><br><span class="line">                    !inetAddress.isLinkLocalAddress() &amp;&amp;</span><br><span class="line"></span><br><span class="line">                    inetAddress.isSiteLocalAddress()) &#123;</span><br><span class="line"></span><br><span class="line">                ip = inetAddress.getHostAddress().toString();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="hljs-keyword">catch</span> (SocketException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>위의 코드로 IP를 호출하면 정상적으로 로컬의 주소를 가져올 수 있습니다.</p>
-<h2 id="4-추가"><a href="#4-추가" class="headerlink" title="4. 추가"></a>4. 추가</h2><p>IPv4 와 IPv6 할당의 차이인지는 확인이 필요합니다.</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
             <a href="/2019/11/01/old/2018-05-29-HTML/" itemprop="url">HTML</a>
         
     </h1>
@@ -523,6 +415,148 @@
 <p>htm</p>
 <p><a href="http://www.99lime.com/_bak/topics/you-only-need-10-tags/" target="_blank" rel="noopener">You Only Need 10 HTML Tags</a> 라는 페이지가 있다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt; - &lt;h6&gt;	Heading</span><br><span class="line">&lt;p&gt;	        Paragraph</span><br><span class="line">&lt;i&gt;	        Italic</span><br><span class="line">&lt;b&gt;	        Bold</span><br><span class="line">&lt;a&gt;	        Anchor</span><br><span class="line">&lt;ul&gt; &amp; &lt;li&gt;	Unordered List &amp; List Item</span><br><span class="line">&lt;blockquote&gt;    Blockquote</span><br><span class="line">&lt;hr&gt;	        Horizontal Rule</span><br><span class="line">&lt;img&gt;	        Image</span><br><span class="line">&lt;div&gt;	        Division</span><br></pre></td></tr></table></figure></p>
 <p>샘플 페이지에 들어가면 이 태그만으로도 충분히 웹의 기본적인 레이아웃을 구성할 수 있음을 보여준다.  </p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-06-05-springAnnotation/" itemprop="url">SpringAnnotation</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.165Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>스프링 MVC에서 자주 사용되는 Annotation을 간략하게 정리한다.</p>
+<hr>
+<p>@Component - 클래스에 선언되는 Annotation. Spring component-scanning 에 의해 선언된 클래스는 컨텍스트에 빈으로 등록된다.</p>
+<p>@Autowired - </p>
+<p>@Controller - MVC패턴의 Controller로 선언한다.  @Component로 선언 할 수 있지만 @RequestMapping(value={“/uri”})@ResponseBody 등을 활용할 수 있다.</p>
+<p>@RestController - @ResponseBody를 선언하지 않는다. RestController(Spring 4.0.1부터 제공)</p>
+<p>@RequestMapping  </p>
+<p>@Repository </p>
+<p>@Service  </p>
+<p>@Required  </p>
+<p>@Qualifier</p>
+<p>@Resource</p>
+<p>@Scope </p>
+<p>@PostConstruct - Spring LifeCycle에서 InitializingBean인터페이스의 afterPropertiesSet 역할을 할수 있도록 메소드 상단에 선언하다.(Bean 초기화할 때 수행)</p>
+<p>@PreDestroy  - Spring LifeCycle에서 DisposableBean 인터페이스의 destroy 역할을 할수 있도록 메소드 상단에 선언한다.(Bean 소멸될 때 수행)</p>
+<p>@Inject  </p>
+<p>@RequestParam  </p>
+<p>@SessionAttributes  </p>
+<p>@RequestBody  </p>
+<p>@ResponseBody  </p>
+<p>@PathVariablegit  </p>
+<p>@Aspect - AOP 클래스 선언</p>
+<p>@Pointcut(“whthin(범위)”)</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-05-29-VisualCode/" itemprop="url">Visual Code 내가 필요한 단축키 정리</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.152Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>IDE는 이클립스를 주로 사용해왔다.<br>익숙한 도구는 편하지만 새로운 도구는 언제든 흥미를 주기에 충분하다. </p>
+<p>이클립스는 자바 개발에는 무엇보다 충실하다.<br>다만 요즘 하이브리드 앱을 개발하게 되면서 자바스크립트 개발에 적합한 에디터가 필요하다고 생각해서 여러 IDE 중에 무료로 사용할 수 있는 것 들 중 Visual Code를 선택 했다.</p>
+<p>사용하면서 장점은 여러가지 있겠지만 가볍다.</p>
+<p>다른 기능적인 단축키는 많지만 코드를 작성하기 위한 편집용 단축키를 주로 정리하도록 하겠다.<br>하지만 모든 키는 설정이 가능하다는 설정이 바꿀 수 있다. (메뉴에서 파일 &gt; 기본 설정 &gt; 바로가기 키 )</p>
+<p>기본적으로 사용하는 키가 편한지 익혀보고 본인에 맞는 것을 사용하도록 하자.</p>
+<pre>
+1. 열편집      : SHIFT + ALT + 드래그
+2. 열복사      : SHIFT + ALT + 하방향키
+3. 대/소문자   : SHIFT + ALT + Q , ALT + Q 
+4. 한줄 삭제   : CTRL + SHIFT + K  
+5. 콘솔 열기   : CTRL + `
+6. 코드 정렬   : 코드 블럭 지정 + CTRL + K,F 
+7. 코드 줄바꿈 : ALT + 상하방향키
+</pre>
+
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-09-26-mac-jekins/" itemprop="url">Jenkins 를 mac os 에 설치</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.147Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>소프트 웨어 개발에 있어서 지속적인 통합 (CI - countinuous integration)을 제공하는 툴의 종류로 오픈소스이다.</p>
+<p>다수의 인원이 개발을 하다보면 개발이나 또는 테스트 서버에 현재 개발 중인 소프트웨어를 배포하고 테스트 하는 환경이 지속적으로 이루어진다. 매번 한 개발자가 담당하여 진행하는 것도 소스의 양과 인원의 들의 코드 충돌 등의 문제를 해결하기 에는 한계가 있다. 이를 자동하기위 한 툴로 사용하는 것이 젠킨스 이다.</p>
+<p>윈도우 환경에서는 설치 버전을 제공하여 사용였지만 맥에서는 사용 방법이 조금 달랐다.</p>
+<p>먼저 homebrew 를 사용하여 젠킨스를 설치하여야 한다.</p>
+<p>Homebrew 설치</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>Jenkins 설치<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install jenkins</span><br></pre></td></tr></table></figure></p>
+<p>Jekins 실행<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services start jenkins</span><br></pre></td></tr></table></figure></p>
+<p>Jekins 중단<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services stop jenkins</span><br></pre></td></tr></table></figure></p>
+<p>Jekins 포트변경<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/opt/jenkins/homebrew.mxcl.jenkins.plist</span><br></pre></td></tr></table></figure><br>파일의 –httpPort= 를 본인이 원하는 포트로 변경하여 사용하면 됩니다.</p>
+<p>맥 자동 시작 시 사용하려면<br>~/Library/LaunchAgents/ 로 파일을 복사하고 파일에<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;RunAtLoad&lt;/key&gt;</span><br><span class="line">    &lt;true/&gt;</span><br></pre></td></tr></table></figure><br>로 설정하여 사용합니다.</p>
 
     
     </div>

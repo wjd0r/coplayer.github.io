@@ -114,7 +114,170 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/11/01/old/2019-03-29-GitlabServer/" itemprop="url">Gitlab 설치하기(Docker on Mac)</a>
+            <a href="/2019/11/01/technology/2019-07-11-springbootRestDocsGradle/" itemprop="url">SpringBoot + Rest Docs + Gradle</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:50:51.593Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Technology/">Technology</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>API를 지속적으로 수정하면서 문서를 수정하는 데는 한계점 있습니다.</p>
+<p>Spring 개발하면서 UI와 함께 간략하게 제공되는 Swagger 와 REST docs가 대표적 입니다.</p>
+<p>Spring 프레임웍으로 개발하면서 Swagger를 사용해 보았고 이번 개발에는 REST docs를 적용해 보기로 했다.</p>
+<p>구글링을 통해 여러 블로그를 찾아서 세팅을 진행 해보았지만 안되는 부분은 <a href="https://docs.spring.io/spring-restdocs/docs/current/reference/html5/" target="_blank" rel="noopener">Spring REST Docs</a> 사이트가 가장 명확하게 가이드를 하고 있으니 참고 하셨으면 합니다.</p>
+<p>Swagger와의 차이는 테스트 코드를 작성해서 문서를 생성해야 한다는 차이가 있습니다.</p>
+<p>테스트 코드로 개발의 정합성을 향상하는 데 큰 도움이 될것으로 생각 됩니다.</p>
+<p>현재의 개발환경은</p>
+<ul>
+<li>Springboot </li>
+<li>Mybatis  </li>
+<li>Gradle</li>
+</ul>
+<p>을 활용하고 있습니다.</p>
+<p>간략하게 세팅해야 하는 부분은 다음과 같습니다.</p>
+<ol>
+<li><p>build.gradle 추가</p>
+</li>
+<li><p>test code 작성</p>
+</li>
+<li><p>adoc 생성</p>
+</li>
+<li><p>html 생성</p>
+</li>
+</ol>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/technology/2019-07-09-intellijTomcatConfig/" itemprop="url">Intellij Tomcat 로그 한글깨짐 현상 </a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:50:48.747Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Technology/">Technology</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>Intellij 의 tomcat 로그 중 한글이 깨지는 현상 </p>
+<p>Intellij의 오른쪽 상단 Editconfiguration<br>Configuration 의 VM options에 다음 코드 추가</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure></p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/technology/2019-06-13-gradleBuildErorr/" itemprop="url">Gradle Build 오류(javax.net.ssl.SSLException)</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:50:44.593Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Technology/">Technology</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>Sprigboot 에서 Gradle 빌드 수행 </p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javax.net.ssl.SSLException:closing inbound before receiving peer&apos;s close_notify</span><br></pre></td></tr></table></figure></p>
+<p>데이터베이스에 SSL설정이 되어 있지 않아 Springboot gradle 빌드시 발생하는 오류라고 합니다.</p>
+<p>jdbc url 에 다음고 같이 옵션을 추가해 주면 빌드가 정상적으로 수행되는 것을 확인 하였습니다.</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ex) jdbc:myslq://localhost:3306?&amp;useSSL=false</span><br></pre></td></tr></table></figure></p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/technology/2019-06-12-javaIPAdress/" itemprop="url">Java IP address 사용하기</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:50:44.584Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Technology/">Technology</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h2 id="1-인지"><a href="#1-인지" class="headerlink" title="1. 인지"></a>1. 인지</h2><p>각각 REST api 개발을 하다보면 개발환경의 IP 주소를 동적으로 할당하여 사용해야 하는 경우가 대부분입니다. 각 개발자들의 개발환경에 맞는 아이피가 할당되도록 프로그램을 수정하던 도중에 사용한 클래스에서 이상한 아이피가 할당되는 것을 확인하게 되었습니다.</p>
+<h2 id="2-분석"><a href="#2-분석" class="headerlink" title="2. 분석"></a>2. 분석</h2><p>InetAddress 내부를 살펴보면 호스트네임이 “localhost” 일때 정확한 IP를 리턴 하도록 구현되어 있습니다. 유닉스와 리눅스 계열에서 네임이 사용자에 따라 동적으로 바뀌면서 IP가 제대로 할당되지 않는 것이 었습니다.</p>
+<p><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String ip = <span class="hljs-string">""</span>;</span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    ip = InetAddress.getLocalHost().getHostAddress();</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(UnknownHostException e)&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-해결"><a href="#3-해결" class="headerlink" title="3. 해결"></a>3. 해결</h2><p>분석 이후 해결책을 구글링 하였습니다.</p>
+<p><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">String ip= <span class="hljs-string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">try</span> &#123;</span><br><span class="line">    Enumeration&lt;NetworkInterface&gt; nienum = NetworkInterface.getNetworkInterfaces();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (nienum.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">        NetworkInterface ni = nienum.nextElement();</span><br><span class="line"></span><br><span class="line">        Enumeration&lt;InetAddress&gt; kk= ni.getInetAddresses();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (kk.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">            InetAddress inetAddress = kk.nextElement();</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">if</span> (!inetAddress.isLoopbackAddress() &amp;&amp;</span><br><span class="line"></span><br><span class="line">                    !inetAddress.isLinkLocalAddress() &amp;&amp;</span><br><span class="line"></span><br><span class="line">                    inetAddress.isSiteLocalAddress()) &#123;</span><br><span class="line"></span><br><span class="line">                ip = inetAddress.getHostAddress().toString();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="hljs-keyword">catch</span> (SocketException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>위의 코드로 IP를 호출하면 정상적으로 로컬의 주소를 가져올 수 있습니다.</p>
+<h2 id="4-추가"><a href="#4-추가" class="headerlink" title="4. 추가"></a>4. 추가</h2><p>IPv4 와 IPv6 할당의 차이인지는 확인이 필요합니다.</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/technology/2019-03-29-GitlabServer/" itemprop="url">Gitlab 설치하기(Docker on Mac)</a>
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -141,40 +304,6 @@
 <p>publish port 와 external_url 은 개인에 맞게 설정하자.</p>
 <p>해당 커멘드가 오류 없이 수행되면 docker images에 gitlab서버가 수행 중일 것이다.  </p>
 <p><a href="http://gitlab.local:30000" target="_blank" rel="noopener">http://gitlab.local:30000</a> 에 접속하면 깃렙 로그인 화면을 확인할 수 있다.</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2019-07-09-intellijTomcatConfig/" itemprop="url">Intellij Tomcat 로그 한글깨짐 현상 </a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.192Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Intellij 의 tomcat 로그 중 한글이 깨지는 현상 </p>
-<p>Intellij의 오른쪽 상단 Editconfiguration<br>Configuration 의 VM options에 다음 코드 추가</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure></p>
 
     
     </div>
@@ -216,42 +345,6 @@
 <ul>
 <li><a href="https://docs.oracle.com/javase/9/docs/api/java/util/Iterator.html" target="_blank" rel="noopener">JAVA DOC</a></li>
 </ul>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2019-06-13-gradleBuildErorr/" itemprop="url">Gradle Build 오류(javax.net.ssl.SSLException)</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.187Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Sprigboot 에서 Gradle 빌드 수행 </p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javax.net.ssl.SSLException:closing inbound before receiving peer&apos;s close_notify</span><br></pre></td></tr></table></figure></p>
-<p>데이터베이스에 SSL설정이 되어 있지 않아 Springboot gradle 빌드시 발생하는 오류라고 합니다.</p>
-<p>jdbc url 에 다음고 같이 옵션을 추가해 주면 빌드가 정상적으로 수행되는 것을 확인 하였습니다.</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ex) jdbc:myslq://localhost:3306?&amp;useSSL=false</span><br></pre></td></tr></table></figure></p>
 
     
     </div>
@@ -430,7 +523,7 @@
     
         <p>티스토리에 포스팅을 다시 가지고 왔습니다.</p>
 <h2 id="Oracle-컬럼-속성-추가-삭제"><a href="#Oracle-컬럼-속성-추가-삭제" class="headerlink" title="- Oracle 컬럼 속성 추가 삭제"></a>- Oracle 컬럼 속성 추가 삭제</h2><p>Oracle DB 사용할 때 이상하게도 매번 찾아보게 되는 컬럼 추가 삭제</p>
-<h2 id="31"><a href="#31" class="headerlink" title="31"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
+<h2 id="18"><a href="#18" class="headerlink" title="18"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&amp; : &amp;amp;</span><br><span class="line">&lt; : &amp;lt;</span><br><span class="line">&gt; : &amp;gt;</span><br><span class="line">‘ : &amp;apos;</span><br><span class="line">” : &amp;quot;</span><br><span class="line">엔터 : &amp;#10;</span><br></pre></td></tr></table></figure></p>
 <h2 id="ORACLE-ORA-01861-literal-does-not-match-format-string"><a href="#ORACLE-ORA-01861-literal-does-not-match-format-string" class="headerlink" title="- ORACLE ORA-01861: literal does not match format string"></a>- ORACLE ORA-01861: literal does not match format string</h2><p><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ORACLE DATE 컬럼을 문자로 조회시 자주 발생하는 에러</span><br><span class="line"></span><br><span class="line">조건절에 좌변의 DATE 객채를 TO_CAHR 포맷으로 CAST </span><br><span class="line"></span><br><span class="line">예) TO_CHAR(컬럼, 'YYYYMMDD')</span><br></pre></td></tr></table></figure></p>
 <h2 id="채번하기-자릿수-LPAD-SEQUENCE"><a href="#채번하기-자릿수-LPAD-SEQUENCE" class="headerlink" title="- 채번하기 자릿수 LPAD, SEQUENCE"></a>- 채번하기 자릿수 LPAD, SEQUENCE</h2><p> 수동으로 채번 할때 많이 사용한다.</p>
@@ -441,87 +534,6 @@
 <li>컬럼을 MAX 채번 하기</li>
 </ol>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">SELECT NVL(MAX(컬럼) ,1) FROM TABLE WHERE PK = PK </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SEQUENCE </span><br><span class="line"></span><br><span class="line">시퀀스 생성</span><br><span class="line">CREATE SEQUENCE &quot;시퀀스명&quot; </span><br><span class="line">구조 확인</span><br><span class="line">DESC USER_SEQUENCES</span><br><span class="line">시퀀스 값 사용</span><br><span class="line">&quot;시퀀스&quot;.NEXTVAL =&gt; 현재 시퀀스의 다음 증가값 반환</span><br><span class="line">&quot;시퀀스&quot;.CURRVAL =&gt; 현재 시퀀스 값 반환</span><br><span class="line"></span><br><span class="line">ㆍSTART WITH : 시작값 지정</span><br><span class="line">ㆍINCREMENT BY : 연속적인 증가치 지정</span><br><span class="line">ㆍMAXVALUE: 가질 수 있는 최대값 지정</span><br><span class="line">ㆍMINVALUE : 가질 수 있는 최소값 지정</span><br><span class="line">ㆍCYCLE: 지정된 최대값까지 증가되면 START WITH 로 지정한 시작값에서 다시 시작</span><br><span class="line">   ※ NOCYCLE : 최대값까지 증가가 완료되면 에러 발생</span><br><span class="line">ㆍCACHE : 메모리상의 시퀀스값 관리, 기본값은 20 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">시퀀스 삭제</span><br><span class="line">DROP SEQUENCE &quot;시퀀스&quot;</span><br><span class="line"></span><br><span class="line">시퀀스 수정</span><br><span class="line">ALTER SEQUENCE &quot;시퀀스&quot; &quot;변경할 속성&quot; &quot;숫자&quot;</span><br><span class="line">※ 시작숫자(START WITH)는 변경할 수 없음, 시퀀스를 새로 생성해야만 함</span><br></pre></td></tr></table></figure></p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2018-11-01-SvnToGit/" itemprop="url">SVN 을 GIT 으로 이관하기 (git svn)</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.176Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>SVN 으로 형상관리 하던 소스를 GIT으로 이전하기 위해서 포스팅을 정리해 봅니다.</p>
-<p>SVN을 오래 동안 써 왔고 큰 어려움이 없이 사용해 왔습니다.  </p>
-<p>단일 프로젝트를 주로 진행해 왔고 모듈을 나눠서 개발하다보면 GIT의 필요성을<br>그다지 느끼기 어렵다고 생각합니다.</p>
-<p>하지만 운영 되고 있는 서비스를 각각의 개발자가 신규 개발과 오류 수정하면서<br>코드를 리펙토링 하기위한 활동 또는 신규 테스트를 위해서는 형상 관리의 유연성과 통합이 쉽게 이루어 져야 합니다.</p>
-<p>비슷한 기능은 svn에서도 가능합니다.<br>다만 같은 기능을 하더라도 빠르고 유연한 대처가 가능하다고 말씀 드리고 싶습니다.<br>해당 포스팅은 svn 과 git은 설치 되었다는 전제로 진행합니다.</p>
-<h3 id="1-git-svn-설치-합니다"><a href="#1-git-svn-설치-합니다" class="headerlink" title="1. git-svn 설치 합니다."></a>1. git-svn 설치 합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-svn</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-이관하기-위한-환경이-되었는지를-확인합니다"><a href="#2-이관하기-위한-환경이-되었는지를-확인합니다" class="headerlink" title="2. 이관하기 위한 환경이 되었는지를 확인합니다."></a>2. 이관하기 위한 환경이 되었는지를 확인합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://bitbucket.org/atlassian/svn-migration-scripts/src</span><br></pre></td></tr></table></figure><br> 사이트에서 다운받기<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -jar svn-migration-scripts.jar verify</span><br></pre></td></tr></table></figure><br> 명령어로 확인합니다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Git: using version </span><br><span class="line">Subversion: using version</span><br><span class="line">git-svn: using version</span><br></pre></td></tr></table></figure><br> 준비된 상태이면 위와 같은 출력이 설치된 버전에 따라 보입니다.</p>
-<h3 id="3-svn-소스를-git-의-형태로-clone-합니다"><a href="#3-svn-소스를-git-의-형태로-clone-합니다" class="headerlink" title="3. svn 소스를 git 의 형태로 clone 합니다."></a>3. svn 소스를 git 의 형태로 clone 합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git svn clone 프로젝트svn주소 --no-metadata  프로젝트이름</span><br></pre></td></tr></table></figure><br> 이 과정 전에 다른 포스팅들에서는 사용자정보를 git 형태로 변환하는 과정들이 있습니다.<br> 과정 중에 큰 이슈가 발생하지 않아 그대로 진행 했습니다.<br><a href="http://lux.cuenet.kr/21" target="_blank" rel="noopener">참고 페이지 링크 </a></p>
-<h3 id="4-git-서버-repository를-생성합니다"><a href="#4-git-서버-repository를-생성합니다" class="headerlink" title="4. git 서버 repository를 생성합니다."></a>4. git 서버 repository를 생성합니다.</h3><p> git 서버에 .git 폴더를 생성하고 다음 명령어를 수행하여 레파지토리로 생성합니다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --bare init</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-git-의-remote-설정을-진행합니다"><a href="#5-git-의-remote-설정을-진행합니다" class="headerlink" title="5. git 의 remote 설정을 진행합니다."></a>5. git 의 remote 설정을 진행합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin 프로젝트git주소</span><br></pre></td></tr></table></figure><br> remote 설정</p>
-<h3 id="6-git-push"><a href="#6-git-push" class="headerlink" title="6. git push"></a>6. git push</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure><br> 정상적으로 remote에 소스가 push 되었는지 확인합니다.</p>
-<p>위 과정을 통해서 간단하게 svn으로 관리하는 소스를 git이로 이관하여 관리할 수 있습니다.</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2019-06-12-javaIPAdress/" itemprop="url">Java IP address 사용하기</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.170Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <h2 id="1-인지"><a href="#1-인지" class="headerlink" title="1. 인지"></a>1. 인지</h2><p>각각 REST api 개발을 하다보면 개발환경의 IP 주소를 동적으로 할당하여 사용해야 하는 경우가 대부분입니다. 각 개발자들의 개발환경에 맞는 아이피가 할당되도록 프로그램을 수정하던 도중에 사용한 클래스에서 이상한 아이피가 할당되는 것을 확인하게 되었습니다.</p>
-<h2 id="2-분석"><a href="#2-분석" class="headerlink" title="2. 분석"></a>2. 분석</h2><p>InetAddress 내부를 살펴보면 호스트네임이 “localhost” 일때 정확한 IP를 리턴 하도록 구현되어 있습니다. 유닉스와 리눅스 계열에서 네임이 사용자에 따라 동적으로 바뀌면서 IP가 제대로 할당되지 않는 것이 었습니다.</p>
-<p><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String ip = <span class="hljs-string">""</span>;</span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    ip = InetAddress.getLocalHost().getHostAddress();</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(UnknownHostException e)&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-해결"><a href="#3-해결" class="headerlink" title="3. 해결"></a>3. 해결</h2><p>분석 이후 해결책을 구글링 하였습니다.</p>
-<p><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">String ip= <span class="hljs-string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">try</span> &#123;</span><br><span class="line">    Enumeration&lt;NetworkInterface&gt; nienum = NetworkInterface.getNetworkInterfaces();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (nienum.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">        NetworkInterface ni = nienum.nextElement();</span><br><span class="line"></span><br><span class="line">        Enumeration&lt;InetAddress&gt; kk= ni.getInetAddresses();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (kk.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">            InetAddress inetAddress = kk.nextElement();</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">if</span> (!inetAddress.isLoopbackAddress() &amp;&amp;</span><br><span class="line"></span><br><span class="line">                    !inetAddress.isLinkLocalAddress() &amp;&amp;</span><br><span class="line"></span><br><span class="line">                    inetAddress.isSiteLocalAddress()) &#123;</span><br><span class="line"></span><br><span class="line">                ip = inetAddress.getHostAddress().toString();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="hljs-keyword">catch</span> (SocketException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>위의 코드로 IP를 호출하면 정상적으로 로컬의 주소를 가져올 수 있습니다.</p>
-<h2 id="4-추가"><a href="#4-추가" class="headerlink" title="4. 추가"></a>4. 추가</h2><p>IPv4 와 IPv6 할당의 차이인지는 확인이 필요합니다.</p>
 
     
     </div>

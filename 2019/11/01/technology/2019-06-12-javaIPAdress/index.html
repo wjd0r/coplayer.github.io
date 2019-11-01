@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>Intellij Tomcat 로그 한글깨짐 현상  - Ethan Blog</title>
+<title>Java IP address 사용하기 - Ethan Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -103,6 +103,28 @@
                 <div class="navbar-dropdown is-right">
                     
                     
+                    
+                    
+                    <a class="navbar-item" href="#1-인지">1&nbsp;&nbsp;<b>1. 인지</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#2-분석">2&nbsp;&nbsp;<b>2. 분석</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#3-해결">3&nbsp;&nbsp;<b>3. 해결</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#4-추가">4&nbsp;&nbsp;<b>4. 추가</b></a>
+                    
                 </div>
             </div>
             
@@ -123,26 +145,30 @@
     <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            Intellij Tomcat 로그 한글깨짐 현상 
+            Java IP address 사용하기
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.192Z" itemprop="datePublished">Nov 1 2019</time>
+            <time datetime="2019-11-01T05:50:44.584Z" itemprop="datePublished">Nov 1 2019</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
+            <a class="article-category-link" href="/categories/Technology/">Technology</a>
         </span>
         
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>Intellij 의 tomcat 로그 중 한글이 깨지는 현상 </p>
-<p>Intellij의 오른쪽 상단 Editconfiguration<br>Configuration 의 VM options에 다음 코드 추가</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure></p>
+        <h2 id="1-인지"><a href="#1-인지" class="headerlink" title="1. 인지"></a>1. 인지</h2><p>각각 REST api 개발을 하다보면 개발환경의 IP 주소를 동적으로 할당하여 사용해야 하는 경우가 대부분입니다. 각 개발자들의 개발환경에 맞는 아이피가 할당되도록 프로그램을 수정하던 도중에 사용한 클래스에서 이상한 아이피가 할당되는 것을 확인하게 되었습니다.</p>
+<h2 id="2-분석"><a href="#2-분석" class="headerlink" title="2. 분석"></a>2. 분석</h2><p>InetAddress 내부를 살펴보면 호스트네임이 “localhost” 일때 정확한 IP를 리턴 하도록 구현되어 있습니다. 유닉스와 리눅스 계열에서 네임이 사용자에 따라 동적으로 바뀌면서 IP가 제대로 할당되지 않는 것이 었습니다.</p>
+<p><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String ip = <span class="hljs-string">""</span>;</span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    ip = InetAddress.getLocalHost().getHostAddress();</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(UnknownHostException e)&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-해결"><a href="#3-해결" class="headerlink" title="3. 해결"></a>3. 해결</h2><p>분석 이후 해결책을 구글링 하였습니다.</p>
+<p><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">String ip= <span class="hljs-string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">try</span> &#123;</span><br><span class="line">    Enumeration&lt;NetworkInterface&gt; nienum = NetworkInterface.getNetworkInterfaces();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (nienum.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">        NetworkInterface ni = nienum.nextElement();</span><br><span class="line"></span><br><span class="line">        Enumeration&lt;InetAddress&gt; kk= ni.getInetAddresses();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (kk.hasMoreElements()) &#123;</span><br><span class="line"></span><br><span class="line">            InetAddress inetAddress = kk.nextElement();</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">if</span> (!inetAddress.isLoopbackAddress() &amp;&amp;</span><br><span class="line"></span><br><span class="line">                    !inetAddress.isLinkLocalAddress() &amp;&amp;</span><br><span class="line"></span><br><span class="line">                    inetAddress.isSiteLocalAddress()) &#123;</span><br><span class="line"></span><br><span class="line">                ip = inetAddress.getHostAddress().toString();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="hljs-keyword">catch</span> (SocketException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>위의 코드로 IP를 호출하면 정상적으로 로컬의 주소를 가져올 수 있습니다.</p>
+<h2 id="4-추가"><a href="#4-추가" class="headerlink" title="4. 추가"></a>4. 추가</h2><p>IPv4 와 IPv6 할당의 차이인지는 확인이 필요합니다.</p>
 
     
     </div>
@@ -157,12 +183,12 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/2019/11/01/old/2019-03-29-GitlabServer/">Gitlab 설치하기(Docker on Mac)</a>
+            <a href="/2019/11/01/technology/2019-06-13-gradleBuildErorr/">Gradle Build 오류(javax.net.ssl.SSLException)</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/2019/11/01/old/2018-06-07-iterator/">Iterator Pattern</a>
+            <a href="/2019/11/01/technology/2019-03-29-GitlabServer/">Gitlab 설치하기(Docker on Mac)</a>
             
         </span>
     </div>

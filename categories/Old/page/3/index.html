@@ -121,137 +121,6 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/11/01/old/2018-11-07-ssh/" itemprop="url">SSH 를 비번 없이 사용하기</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.078Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Jenkins 자동화 빌드 배포를 하던 도중에 git 서버와<br>연동하여 프로젝트를 빌드가 필요해서 진행 하던 도중에<br>SSH 설정이 필요하다는 것을 알게됐습니다.</p>
-<p>SSH 설정 관련 해서는 다양한 포스팅이 있습니다.<br>진행하면서 정리한 것을 간략하게 설명 하겠습니다.</p>
-<h3 id="1-로컬-환경-ssh-에서-rsa-키를-생성합니다"><a href="#1-로컬-환경-ssh-에서-rsa-키를-생성합니다" class="headerlink" title="1. 로컬 환경 .ssh 에서 rsa 키를 생성합니다."></a>1. 로컬 환경 .ssh 에서 rsa 키를 생성합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure><br>이거 저거 물어보지만 특별한 디텍토리 위치나 재생성이 아니면<br>엔터엔터엔터 </p>
-<p>id_rsa 와 id_rsa.pub 한 쌍이 생깁니다.</p>
-<h3 id="2-서버로-사용하는-remote의-ssh-폴더를-생성합니다"><a href="#2-서버로-사용하는-remote의-ssh-폴더를-생성합니다" class="headerlink" title="2. 서버로 사용하는 remote의 .ssh 폴더를 생성합니다."></a>2. 서버로 사용하는 remote의 .ssh 폴더를 생성합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@remoteIPorURL mkdir -p .ssh</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-remote-서버에-pub-키-authorized-keys-파일에-추가힙니다"><a href="#3-remote-서버에-pub-키-authorized-keys-파일에-추가힙니다" class="headerlink" title="3. remote 서버에 pub 키 authorized_keys 파일에 추가힙니다."></a>3. remote 서버에 pub 키 authorized_keys 파일에 추가힙니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat .ssh/id_rsa.pub | ssh username@remoteIPorURL &apos;cat &gt;&gt; .ssh/authorized_keys&apos;</span><br></pre></td></tr></table></figure><br>authorized_keys 에 퍼블릭 키를 추가 하는 방법은 수동 복사으로 복사하는 방법<br>ssh-copy-id 을 활용하는 방법, scp 사용법 등이 있습니다.</p>
-<p>진행하다가 키 문제인가 싶어서 다양한 방법을 찾고 실행해 보았습니다.<br>제대로 하면 결국에는 다 같은 방법입니다.</p>
-<h3 id="4-정상-접속을-확인합니다"><a href="#4-정상-접속을-확인합니다" class="headerlink" title="4. 정상 접속을 확인합니다."></a>4. 정상 접속을 확인합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@remoteIPorURL</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h1 id="필수로-확인해야할-사항"><a href="#필수로-확인해야할-사항" class="headerlink" title="필수로 확인해야할 사항"></a>필수로 확인해야할 사항</h1><h2 id="1-폴더-권한"><a href="#1-폴더-권한" class="headerlink" title="1. 폴더 권한"></a>1. 폴더 권한</h2><p>폴더 권한이 유져 r 권한이 활성화 되어 있어야 합니다.</p>
-<h2 id="2-RSA-키-관리"><a href="#2-RSA-키-관리" class="headerlink" title="2. RSA 키 관리"></a>2. RSA 키 관리</h2><p>id_rsa 는 개인키이므로 관리에 주의를 요합니다.  </p>
-<h2 id="2-macOS에서는-ROOT-권한에서-접근-되지-않습니다"><a href="#2-macOS에서는-ROOT-권한에서-접근-되지-않습니다" class="headerlink" title="2. macOS에서는 ROOT 권한에서 접근 되지 않습니다."></a>2. macOS에서는 ROOT 권한에서 접근 되지 않습니다.</h2><p>새로운 사용자를 추가하고 그 유져의 권한으로 접근할 때는 SSH를 rsa 인증을 허용하지만<br>ROOT 권한은 여러 방법을 동원해도 안되더군요. 비번을 치는 방법은 잘됩니다.   </p>
-<p>저는 이분에서 많은 시간을 소모 했습니다.<br>macOS의 특징이겠거니 미루어 짐작해 봅니다.</p>
-<p>방법을 아시는분은 첨언 부탁드립니다.</p>
-<p>그럼 도움이 되셨으면 합니다.</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2018-05-29-jQuery/" itemprop="url">jQuery 관련</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.075Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>javascript library로 javascript의 생산성을 향상 시켜주는 라이브러리.</p>
-<p>jQuery 대부분의 튜토리얼을 제공<br>[ <a href="https://www.w3schools.com/jquery/default.asp" target="_blank" rel="noopener">W3SCHOOL JQUERY</a> ]</p>
-<h3 id="jQuery-CDN"><a href="#jQuery-CDN" class="headerlink" title="jQuery CDN"></a>jQuery CDN</h3><p><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="jQuery-DOM-에-selector"><a href="#jQuery-DOM-에-selector" class="headerlink" title="jQuery DOM 에 selector"></a>jQuery DOM 에 selector</h3><p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="hljs-comment">// jQuery methods go here...</span></span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="hljs-keyword">this</span>).hide() - hides the current element.<span class="hljs-comment">//현재 페이지 모두에 적용</span></span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"p"</span>).hide() - hides all &lt;p&gt; elements. <span class="hljs-comment">//p tag 모두에 접근</span></span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">".test"</span>).hide() - hides all elements <span class="hljs-keyword">with</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"test"</span>. <span class="hljs-comment">//test class명 접근</span></span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"#test"</span>).hide() - hides the element <span class="hljs-keyword">with</span> id=<span class="hljs-string">"test"</span>.<span class="hljs-comment">//엘리멘트 id에 접근</span></span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"tr:even"</span>)	Selects all even &lt;tr&gt; elements <span class="hljs-comment">// 응용</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="jQuery-Syntax-For-Event-Methods"><a href="#jQuery-Syntax-For-Event-Methods" class="headerlink" title="jQuery Syntax For Event Methods"></a>jQuery Syntax For Event Methods</h3><p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">"p"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="hljs-keyword">this</span>).hide();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"p"</span>).dblclick(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="hljs-keyword">this</span>).hide();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"#p1"</span>).mouseleave(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="hljs-string">"Bye! You now leave p1!"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"#p1"</span>).mouseup(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="hljs-string">"Mouse up over p1!"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"#p1"</span>).hover(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="hljs-string">"You entered p1!"</span>);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="hljs-string">"Bye! You now leave p1!"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"input"</span>).blur(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="hljs-keyword">this</span>).css(<span class="hljs-string">"background-color"</span>, <span class="hljs-string">"#ffffff"</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"p"</span>).on(<span class="hljs-string">"click"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="hljs-keyword">this</span>).hide();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"p"</span>).on(&#123;</span><br><span class="line">    mouseenter: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="hljs-keyword">this</span>).css(<span class="hljs-string">"background-color"</span>, <span class="hljs-string">"lightgray"</span>);</span><br><span class="line">    &#125;, </span><br><span class="line">    mouseleave: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="hljs-keyword">this</span>).css(<span class="hljs-string">"background-color"</span>, <span class="hljs-string">"lightblue"</span>);</span><br><span class="line">    &#125;, </span><br><span class="line">    click: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        $(<span class="hljs-keyword">this</span>).css(<span class="hljs-string">"background-color"</span>, <span class="hljs-string">"yellow"</span>);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>$ 함수 이용. jQuery 오브젝트의 팩토리 메소드이다.<br> 각각의 함수들은 jQuery 오브젝트를 반환하고 서로 연계할 수 있다.  </p>
-<p>$. -가 앞에 붙은 함수 이용. 이들 함수는 jQuery 오브젝트 그 자체와 연동되지는 않는다.</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2018-07-03-mac/" itemprop="url">MAC TIP </a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.073Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <h2 id="mysql-workbench-단축키"><a href="#mysql-workbench-단축키" class="headerlink" title="mysql workbench 단축키"></a>mysql workbench 단축키</h2><ol>
-<li>현재 커서가 위치하는 쿼리 실행  : Ctrl + Enter  </li>
-<li>쿼리 보기좋게 정렬하기(Beautify Query) : Ctrl + B  </li>
-<li>세미클론(;)으로 분리된 쿼리  다중(여러개) 실행 : Ctrl + Shift + Enter   </li>
-<li>새로운 쿼리 에디터 열기 : Ctrl + T (Ctrl키 + t)  </li>
-<li>저장된 스크립트파일(*.sql)파일 열기 : Ctrl + Shift + O (Ctrl키 + Shift키 + o)  </li>
-<li>쿼리를 보기 좋게 정렬 : Ctrl + B (Ctrl키 + b)  </li>
-<li>Reverse Engineer Database : Ctrl + R (Ctrl키 + r) </li>
-</ol>
-<h2 id="mac-OS-단축키"><a href="#mac-OS-단축키" class="headerlink" title="mac OS 단축키"></a>mac OS 단축키</h2><ol>
-<li>숨긴파일 확인 shift + command + .</li>
-<li>켜져있는 프로그램 한눈에 보기  control + 방향키(위로)</li>
-<li>프로그램 종요 : command + w</li>
-<li>프로그램 숨기기 : command + h</li>
-</ol>
-<h2 id="mac에서-tomcat-service-가-살아-있을때"><a href="#mac에서-tomcat-service-가-살아-있을때" class="headerlink" title="mac에서 tomcat service 가 살아 있을때"></a>mac에서 tomcat service 가 살아 있을때</h2><p>process 를 종료한다.<br>$ sudo lsof -i :8080<br>$ 패스워드 입력<br>$ kill -9 위에서찾는PID값을넣는다</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
             <a href="/2019/11/01/old/2018-11-22-LinuxCommand2/" itemprop="url">Linux 명령어(top, free, grep option) </a>
         
     </h1>
@@ -269,7 +138,7 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h2 id="1-시스템의-메모리-정보-파일-출력"><a href="#1-시스템의-메모리-정보-파일-출력" class="headerlink" title="1. 시스템의 메모리 정보 파일 출력"></a>1. 시스템의 메모리 정보 파일 출력</h2><h2 id="66"><a href="#66" class="headerlink" title="66"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/meminfo</span><br></pre></td></tr></table></figure></h2><h2 id="2-시스템-프로세스-상세-내용보기"><a href="#2-시스템-프로세스-상세-내용보기" class="headerlink" title="2. 시스템 프로세스 상세 내용보기"></a>2. 시스템 프로세스 상세 내용보기</h2><ul>
+        <h2 id="1-시스템의-메모리-정보-파일-출력"><a href="#1-시스템의-메모리-정보-파일-출력" class="headerlink" title="1. 시스템의 메모리 정보 파일 출력"></a>1. 시스템의 메모리 정보 파일 출력</h2><h2 id="72"><a href="#72" class="headerlink" title="72"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/meminfo</span><br></pre></td></tr></table></figure></h2><h2 id="2-시스템-프로세스-상세-내용보기"><a href="#2-시스템-프로세스-상세-내용보기" class="headerlink" title="2. 시스템 프로세스 상세 내용보기"></a>2. 시스템 프로세스 상세 내용보기</h2><ul>
 <li>윈도우의 작업 관리자와 비슷한 형태를 띈다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure></li>
 <li>출력 내용 상세 설명  </li>
 </ul>
@@ -498,61 +367,6 @@ assertNotNull(a)    a객체가 Null이 아님을 확인한다.
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/11/01/old/2019-07-11-springbootRestDocsGradle/" itemprop="url">SpringBoot + Rest Docs + Gradle</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.046Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>API를 지속적으로 수정하면서 문서를 수정하는 데는 한계점 있습니다.</p>
-<p>Spring 개발하면서 UI와 함께 간략하게 제공되는 Swagger 와 REST docs가 대표적 입니다.</p>
-<p>Spring 프레임웍으로 개발하면서 Swagger를 사용해 보았고 이번 개발에는 REST docs를 적용해 보기로 했다.</p>
-<p>구글링을 통해 여러 블로그를 찾아서 세팅을 진행 해보았지만 안되는 부분은 <a href="https://docs.spring.io/spring-restdocs/docs/current/reference/html5/" target="_blank" rel="noopener">Spring REST Docs</a> 사이트가 가장 명확하게 가이드를 하고 있으니 참고 하셨으면 합니다.</p>
-<p>Swagger와의 차이는 테스트 코드를 작성해서 문서를 생성해야 한다는 차이가 있습니다.</p>
-<p>테스트 코드로 개발의 정합성을 향상하는 데 큰 도움이 될것으로 생각 됩니다.</p>
-<p>현재의 개발환경은</p>
-<ul>
-<li>Springboot </li>
-<li>Mybatis  </li>
-<li>Gradle</li>
-</ul>
-<p>을 활용하고 있습니다.</p>
-<p>간략하게 세팅해야 하는 부분은 다음과 같습니다.</p>
-<ol>
-<li><p>build.gradle 추가</p>
-</li>
-<li><p>test code 작성</p>
-</li>
-<li><p>adoc 생성</p>
-</li>
-<li><p>html 생성</p>
-</li>
-</ol>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
             <a href="/2019/11/01/old/2018-08-30-vscodetip/" itemprop="url">VS Code TIP </a>
         
     </h1>
@@ -576,6 +390,173 @@ assertNotNull(a)    a객체가 Null이 아님을 확인한다.
 <li><a href="https://github.com/git-for-windows/git/releases" target="_blank" rel="noopener">https://github.com/git-for-windows/git/releases</a></li>
 </ul>
 <p>위 사이트에 접속하여 Git 최신 버전을 설치하면 현상이 없어졌다.</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-11-02-swagger/" itemprop="url">Spring 4 MVC 에서 Swagger 설정하기</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.042Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>REST API 서버를 구성하게 되면<br>초기 설계와 변경되는 경우는 무수히 많습니다.</p>
+<p>그때 마다 본래는 설계 문서를 변경하고 배포하는 것을<br>수시로 이루어져야 하지만 실무에서 현실상 인력 구성이나<br>내외부적인 요인으로 인해서 어려운 경우가 있습니다.</p>
+<p>나중에 결국 문서 조차 맞지 않아서 오히려 혼란을 가중 시키는 경우도 존재합니다.<br>(문서는 부디 최신화합시다.)</p>
+<p>그리고 테스트에 있어도 일일히 API의 파라미터나 맵핑 값을<br>확인해서 POSTMAN 활용하는 등 조금은 번거로운 경우가 발생합니다.</p>
+<p>이와 같은 경우 Swagger를 사용해 보시길 바랍니다.</p>
+<p>포스팅은 Spirng 4 MVC 에 Maven 기준입니다.<br>(SpringBoot jpa 포스팅이 많은 관계로…)</p>
+<h3 id="0-Controller-에-annotation-이-있어야-합니다"><a href="#0-Controller-에-annotation-이-있어야-합니다" class="headerlink" title="0. Controller 에 annotation 이 있어야 합니다."></a>0. Controller 에 annotation 이 있어야 합니다.</h3><p><figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@RequestMapping</span>(value=<span class="hljs-string">""</span>)</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">### 1. pom.xml 에 dependency 설정 추가합니다.</span><br></pre></td></tr></table></figure><br><dependency><br>    <groupid>io.springfox</groupid><br>    <artifactid>springfox-swagger2</artifactid><br>    <version>2.6.1</version><br></dependency></p>
+<dependency>
+    <groupid>io.springfox</groupid>
+    <artifactid>springfox-swagger-ui</artifactid>
+    <version>2.6.1</version>
+</dependency>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2. mvc-config.xml 설정 추가합니다.</span><br></pre></td></tr></table></figure>
+<bean id="swagger2Config" class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration"></bean>
+
+<p>&lt;mvc:default-servlet-handler /&gt;<br>&lt;mvc:resources location=”classpath:/META-INF/resources/“ mapping=”swagger-ui.html”&gt;<br>&lt;mvc:resources location=”classpath:/META-INF/resources/webjars/“ mapping=”/webjars/**”&gt;<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 3. web.xml 에 sevlert 설정합니다.</span><br></pre></td></tr></table></figure><br>  <servlet-mapping><br>    <servlet-name>dispatcher</servlet-name><br>    <url-pattern>/</url-pattern><br>  </servlet-mapping><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">루트가 열려있어야 controller에 접근이 가능하다.</span><br><span class="line"></span><br><span class="line">### 4. swagger 에 접속하여 확인합니다.</span><br></pre></td></tr></table></figure><br>swagger UI - <a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html</a><br>swagger Json doc - <a href="http://localhost:8080/v2/api-docs" target="_blank" rel="noopener">http://localhost:8080/v2/api-docs</a></p>
+<pre><code>
+이번 포스팅에서는 설정 방법에 대해서만 남깁니다.
+
+spring 3나 spring boot에 대한 포스팅이 대부분이라
+도움이 되셨으면 합니다.
+
+</code></pre>
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-06-20-javascriptTIP/" itemprop="url">javascript , Jquery Tip </a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.039Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>javascript와 jQuery를 사용하다보면 종종 활용하게 되는 기능이나 method를 모아둔 포스팅 입니다.</p>
+<hr>
+<h3 id="1-javascript-lastIndexOf-활용"><a href="#1-javascript-lastIndexOf-활용" class="headerlink" title="1. javascript lastIndexOf 활용"></a>1. javascript lastIndexOf 활용</h3><p>javascript 의 lastIndexOf() method를 활용하여 확장자를 추출하여 파일 타입을 구분하는 경우가 종종 있습니다. 다음과 같이 활용하여 사용할 수 있습니다.</p>
+<p><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/** </span></span><br><span class="line"><span class="hljs-comment">* lastIndexOf('.') </span></span><br><span class="line"><span class="hljs-comment">* 뒤에서부터 '.'의 위치를 찾기위한 함수</span></span><br><span class="line"><span class="hljs-comment">* 검색 문자의 위치를 반환한다.</span></span><br><span class="line"><span class="hljs-comment">* 파일 이름에 '.'이 포함되는 경우가 있기 때문에 lastIndexOf() 사용</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-keyword">var</span> filename = item.orgin_file_nm;</span><br><span class="line"><span class="hljs-keyword">var</span> length = filename.length;</span><br><span class="line"><span class="hljs-keyword">var</span> lastDot = filename.lastIndexOf(<span class="hljs-string">'.'</span>) + <span class="hljs-number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 확장자추출 lowercase</span></span><br><span class="line"><span class="hljs-keyword">var</span> fileExt = filename.substring(lastDot, length).toLowerCase();</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="2-jQuery-css-활용"><a href="#2-jQuery-css-활용" class="headerlink" title="2.  jQuery .css() 활용"></a>2.  jQuery .css() 활용</h3><p>display 속성을 활용하여 element를 보이고 숨기는 기능 활용할 수 있습니다.</p>
+<h2 id="16"><a href="#16" class="headerlink" title="16"></a><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> num = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//보이기/숨기기</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">imageview</span>(<span class="hljs-params">num</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> ($(<span class="hljs-string">'#img_'</span> + num).css(<span class="hljs-string">"display"</span>) != <span class="hljs-string">"none"</span>) &#123;</span><br><span class="line">        $(<span class="hljs-string">'#img_'</span> + num).hide();</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        $(<span class="hljs-string">'#img_'</span> + num).show()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></h2><h3 id="3-jQuery-find-활용"><a href="#3-jQuery-find-활용" class="headerlink" title="3. jQuery .find() 활용"></a>3. jQuery .find() 활용</h3><p>find() 를 활용하여 id값에 속해있는 img element를 추출하여 src를 맵핑하는 데 활용한 예제 입니다.</p>
+<h2 id="17"><a href="#17" class="headerlink" title="17"></a><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//첨부된 이미지의 src를 추출</span></span><br><span class="line"><span class="hljs-keyword">var</span> list = $(<span class="hljs-string">'#fileList'</span>).find(<span class="hljs-string">'img'</span>);</span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(list[i].src);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></h2><h3 id="4-coding-style-가이드"><a href="#4-coding-style-가이드" class="headerlink" title="4. coding style 가이드"></a>4. coding style 가이드</h3><p>javascript는 다른 언어에 비하여 코딩 스타일이 정말 다양한 편이고 다이나믹하게 구현이 가능하다보니 어떤 코딩 스타일이 표준이라고 보기 어렵습니다. 종종 코딩하다가도 이게 맞는건가? 라는 생각을 종종합니다. 그래서 찾아보니 구글에서는 코딩 스타일에 대한 <a href="https://google.github.io/styleguide/jsguid`e.html" target="_blank" rel="noopener">가이드</a>를 해주는 페이지가 있었습니다.</p>
+<p>이 <a href="https://www.vobour.com/%EA%B5%AC%EA%B8%80%EC%9D%80-%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B0%80%EC%9D%B4%EB%93%9C%EB%A5%BC-%EB%B0%9C%ED%96%89-%ED%95%A9%EB%8B%88%EB%8B%A4-%EB%8B%A4%EC%9D%8C%EC%9D%80-%EB%AA%87-%EA%B0%80%EC%A7%80-%ED%95%B5%EC%8B%AC" target="_blank" rel="noopener">포스팅</a>을 참조 하였습니다.</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-06-05-spring/" itemprop="url">SpringBoot</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.036Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “just run”.<br>Spring  공식 사이트의 Spring boot에 대한 첫 소개이다. 말 그대로 쉽게 만들고 “just run” 하면 되는 어플리케이션 플랫폼이다.</p>
+<hr>
+<p>다른 언어 진영에서의 웹 프레임웍인 node.js 의 express, python 의 django, ruby 의 rails 등은 빠르고 특이한 설정없이 웹을 생성하여 서비스 및 테스트를 실행수 있는 반면의 spring은 많은 기능이 있는 만큼 dependency 설정이나 기타 xml 설정(초기 빌드업), was나 서버 배포시 발생 문제를 해결하는 데 많은 시간을 할애 해야한다.</p>
+<p>아마도 이런한 단점을 보완하는 점에서 java 진영의 spring boot는 사용할만한 이유는 충분하다고 본다.</p>
+<h2 id="Spring-boot-장점"><a href="#Spring-boot-장점" class="headerlink" title="- Spring boot 장점"></a>- Spring boot 장점</h2><ul>
+<li>독립 실행 형 Spring 애플리케이션 작성(개발 진행할때 따로 tomcat설정 필요없음)</li>
+<li>Tomcat, Jetty 또는 Undertow를 직접 임베드 (WAR 파일을 배치 할 필요 없음)</li>
+<li>XML 생성을위한 코드 생성 및 요구 사항 없음</li>
+<li>Dependency 의 표준화(maven, gradle)</li>
+</ul>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-07-16-JavascriptCheckAll/" itemprop="url">jQuery 를 이용한 체크박스 전체 선택 및 해제</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.033Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>HTML checkbox 들의 전체선택 및 해제를 jquey를 활용하여 구현.</p>
+<p><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Insert title here<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">    $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-actionscript">        <span class="hljs-comment">//전체선택 체크박스 클릭</span></span></span><br><span class="line"><span class="hljs-javascript">        $(<span class="hljs-string">"#check_all"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-actionscript">            <span class="hljs-comment">//전체선택 체크박스가 체크된상태일경우</span></span></span><br><span class="line"><span class="hljs-javascript">            <span class="hljs-keyword">if</span>($(<span class="hljs-string">"#check_all"</span>).prop(<span class="hljs-string">"checked"</span>)) &#123;</span></span><br><span class="line"><span class="hljs-actionscript">                <span class="hljs-comment">//input type 이 checkbox인 경우 전부 선택</span></span></span><br><span class="line"><span class="hljs-javascript">                $(<span class="hljs-string">"input[type=checkbox]"</span>).prop(<span class="hljs-string">"checked"</span>,<span class="hljs-literal">true</span>);</span></span><br><span class="line"><span class="hljs-actionscript">            &#125; <span class="hljs-keyword">else</span> &#123;</span></span><br><span class="line"><span class="hljs-actionscript">                <span class="hljs-comment">//input type 이 checkbox인 경우 전부 해제</span></span></span><br><span class="line"><span class="hljs-javascript">                $(<span class="hljs-string">"input[type=checkbox]"</span>).prop(<span class="hljs-string">"checked"</span>,<span class="hljs-literal">false</span>);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">        전체선택 : <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"check_all"</span>/&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>/&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>/&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>/&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>/&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>/&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 
     
     </div>

@@ -121,6 +121,49 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2019/11/01/old/2018-11-01-SvnToGit/" itemprop="url">SVN 을 GIT 으로 이관하기 (git svn)</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.176Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>SVN 으로 형상관리 하던 소스를 GIT으로 이전하기 위해서 포스팅을 정리해 봅니다.</p>
+<p>SVN을 오래 동안 써 왔고 큰 어려움이 없이 사용해 왔습니다.  </p>
+<p>단일 프로젝트를 주로 진행해 왔고 모듈을 나눠서 개발하다보면 GIT의 필요성을<br>그다지 느끼기 어렵다고 생각합니다.</p>
+<p>하지만 운영 되고 있는 서비스를 각각의 개발자가 신규 개발과 오류 수정하면서<br>코드를 리펙토링 하기위한 활동 또는 신규 테스트를 위해서는 형상 관리의 유연성과 통합이 쉽게 이루어 져야 합니다.</p>
+<p>비슷한 기능은 svn에서도 가능합니다.<br>다만 같은 기능을 하더라도 빠르고 유연한 대처가 가능하다고 말씀 드리고 싶습니다.<br>해당 포스팅은 svn 과 git은 설치 되었다는 전제로 진행합니다.</p>
+<h3 id="1-git-svn-설치-합니다"><a href="#1-git-svn-설치-합니다" class="headerlink" title="1. git-svn 설치 합니다."></a>1. git-svn 설치 합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-svn</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-이관하기-위한-환경이-되었는지를-확인합니다"><a href="#2-이관하기-위한-환경이-되었는지를-확인합니다" class="headerlink" title="2. 이관하기 위한 환경이 되었는지를 확인합니다."></a>2. 이관하기 위한 환경이 되었는지를 확인합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://bitbucket.org/atlassian/svn-migration-scripts/src</span><br></pre></td></tr></table></figure><br> 사이트에서 다운받기<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -jar svn-migration-scripts.jar verify</span><br></pre></td></tr></table></figure><br> 명령어로 확인합니다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Git: using version </span><br><span class="line">Subversion: using version</span><br><span class="line">git-svn: using version</span><br></pre></td></tr></table></figure><br> 준비된 상태이면 위와 같은 출력이 설치된 버전에 따라 보입니다.</p>
+<h3 id="3-svn-소스를-git-의-형태로-clone-합니다"><a href="#3-svn-소스를-git-의-형태로-clone-합니다" class="headerlink" title="3. svn 소스를 git 의 형태로 clone 합니다."></a>3. svn 소스를 git 의 형태로 clone 합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git svn clone 프로젝트svn주소 --no-metadata  프로젝트이름</span><br></pre></td></tr></table></figure><br> 이 과정 전에 다른 포스팅들에서는 사용자정보를 git 형태로 변환하는 과정들이 있습니다.<br> 과정 중에 큰 이슈가 발생하지 않아 그대로 진행 했습니다.<br><a href="http://lux.cuenet.kr/21" target="_blank" rel="noopener">참고 페이지 링크 </a></p>
+<h3 id="4-git-서버-repository를-생성합니다"><a href="#4-git-서버-repository를-생성합니다" class="headerlink" title="4. git 서버 repository를 생성합니다."></a>4. git 서버 repository를 생성합니다.</h3><p> git 서버에 .git 폴더를 생성하고 다음 명령어를 수행하여 레파지토리로 생성합니다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --bare init</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-git-의-remote-설정을-진행합니다"><a href="#5-git-의-remote-설정을-진행합니다" class="headerlink" title="5. git 의 remote 설정을 진행합니다."></a>5. git 의 remote 설정을 진행합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin 프로젝트git주소</span><br></pre></td></tr></table></figure><br> remote 설정</p>
+<h3 id="6-git-push"><a href="#6-git-push" class="headerlink" title="6. git push"></a>6. git push</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure><br> 정상적으로 remote에 소스가 push 되었는지 확인합니다.</p>
+<p>위 과정을 통해서 간단하게 svn으로 관리하는 소스를 git이로 이관하여 관리할 수 있습니다.</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2019/11/01/old/2018-05-29-HTML/" itemprop="url">HTML</a>
         
     </h1>
@@ -572,58 +615,13 @@ SELECT SYSDATE + (INTERVAL '1' YEAR) FROM DUAL       --1년 더하기
 <h1 id="5-Like절-‘-’-사용법"><a href="#5-Like절-‘-’-사용법" class="headerlink" title="5. Like절 ‘%’ 사용법"></a>5. Like절 ‘%’ 사용법</h1><p>Oracle : Like ‘%’||’문자’||’%’ 이런식으로 컬럼명 앞뒤로 ‘%’<br>Mysql : LIKE CONCAT(‘문자’,’%’) 이런식으로 CONCAT 함수 사용</p>
 <hr>
 <h1 id="6-형변환"><a href="#6-형변환" class="headerlink" title="6. 형변환"></a>6. 형변환</h1><p>Oracle : To_char, To_number 등<br>Mysql : CAST  </p>
-<h2 id="61"><a href="#61" class="headerlink" title="61"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Value       Description</span><br><span class="line">DATE	    Converts value to DATE. Format: &quot;YYYY-MM-DD&quot;</span><br><span class="line">DATETIME    Converts value to DATETIME. Format: &quot;YYYY-MM-DD HH:MM:SS&quot;</span><br><span class="line">TIME	    Converts value to TIME. Format: &quot;HH:MM:SS&quot;</span><br><span class="line">CHAR	    Converts value to CHAR (a fixed length string)</span><br><span class="line">SIGNED	    Converts value to SIGNED (a signed 64-bit integer)</span><br><span class="line">UNSIGNED    Converts value to UNSIGNED (an unsigned 64-bit integer)</span><br><span class="line">BINARY	    Converts value to BINARY (a binary string)</span><br></pre></td></tr></table></figure></h2><h1 id="7-ROWNUM"><a href="#7-ROWNUM" class="headerlink" title="7. ROWNUM"></a>7. ROWNUM</h1><p>Oracle : where 절에 rownum &gt; 5 and rownum =&lt; 10<br>Mysql : where절 없이 limit 5,10</p>
+<h2 id="71"><a href="#71" class="headerlink" title="71"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Value       Description</span><br><span class="line">DATE	    Converts value to DATE. Format: &quot;YYYY-MM-DD&quot;</span><br><span class="line">DATETIME    Converts value to DATETIME. Format: &quot;YYYY-MM-DD HH:MM:SS&quot;</span><br><span class="line">TIME	    Converts value to TIME. Format: &quot;HH:MM:SS&quot;</span><br><span class="line">CHAR	    Converts value to CHAR (a fixed length string)</span><br><span class="line">SIGNED	    Converts value to SIGNED (a signed 64-bit integer)</span><br><span class="line">UNSIGNED    Converts value to UNSIGNED (an unsigned 64-bit integer)</span><br><span class="line">BINARY	    Converts value to BINARY (a binary string)</span><br></pre></td></tr></table></figure></h2><h1 id="7-ROWNUM"><a href="#7-ROWNUM" class="headerlink" title="7. ROWNUM"></a>7. ROWNUM</h1><p>Oracle : where 절에 rownum &gt; 5 and rownum =&lt; 10<br>Mysql : where절 없이 limit 5,10</p>
 <hr>
 <h1 id="8-Sequence-시퀀스-는-둘-다-사용자함수를-만들어서-아래와-같이-사용"><a href="#8-Sequence-시퀀스-는-둘-다-사용자함수를-만들어서-아래와-같이-사용" class="headerlink" title="8. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용"></a>8. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용</h1><p>Oracle : 시퀀스명.nextval<br>Mysql : 시퀀스명.currval</p>
 <hr>
 <h1 id="9-문자열-자르기"><a href="#9-문자열-자르기" class="headerlink" title="9. 문자열 자르기"></a>9. 문자열 자르기</h1><p>Oracle: SUBSTR(문자열, 1, 10)<br>Mysql: SUBSTRING(문자열, 1,10), LEFT(문자열, 3), RIGHT(문자열, 3)</p>
 <hr>
 <h1 id="10-문자열-합치기"><a href="#10-문자열-합치기" class="headerlink" title="10. 문자열 합치기"></a>10. 문자열 합치기</h1><p>Oracle: 문자열(또는 컬럼) || ‘’<br>Mysql: CONCAT(문자열(또는 컬럼), ‘’)</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2018-05-29-SVN/" itemprop="url">SVN</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.083Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <h2 id="형상관리"><a href="#형상관리" class="headerlink" title="형상관리"></a><em><strong>형상관리</strong></em></h2><p><strong>형상관리</strong>는 소스의 변화를 끊임없이 관리하는 것을 말한다. 단순히 소스 뿐만 아니라,이미지나 바이너리나 심지어 OS까지 버전관리를 한다. 가장 큰 장점은 소스관리를 통해서 프로젝트의 일관성, 안정성을 유지 할수 있다는 것이다.</p>
-<hr>
-<h3 id="Apache-Subversion-SVN"><a href="#Apache-Subversion-SVN" class="headerlink" title="- Apache Subversion (SVN)"></a>- Apache Subversion (SVN)</h3><p> CVS의 단점을 개선하고 거의 동일한 사용방법의 SVN ( <a href="https://ko.wikipedia.org/wiki/%EC%84%9C%EB%B8%8C%EB%B2%84%EC%A0%84" target="_blank" rel="noopener">WIKI 참조</a> )  </p>
-<p>VisualSVN - Window에서 SVN 서버환경을 구축하는 대표적인 프로그램. Manager를 이용하여 사용이 쉽다. ( <a href="https://www.visualsvn.com/server/download/" target="_blank" rel="noopener">VisualSVN Server 다운</a> )  </p>
-<p>tortoiseSvn - 클라이언트에서 SVN을 사용하는 대표적인 프로그램  ( <a href="https://tortoisesvn.net/downloads.html" target="_blank" rel="noopener">tortoiseSVN 다운</a> )</p>
-<h3 id="SVN-이관"><a href="#SVN-이관" class="headerlink" title="- SVN 이관"></a>- SVN 이관</h3><p>windows 환경에서  SVN 서버에서 이관 작업을 수행하게 되었다.</p>
-<ol>
-<li>Repository 폴더를 통째로 복사 해당 서버의 Repository에 복사</li>
-<li>SVN server 설치</li>
-<li>복사한 경로로 Repository 지정</li>
-</ol>
-<p>심플하게 완료 되었다.<br>명령어를 통하여 SVN dump를 만드는 방법이 존재하는 것으로 보인다.<br>(링크 참조 <a href="http://ppusari.blogspot.kr/2015/02/svn.html" target="_blank" rel="noopener">Link</a>)</p>
-<hr>
-<h3 id="이관된-SVN-에-sync"><a href="#이관된-SVN-에-sync" class="headerlink" title="이관된 SVN 에 sync"></a>이관된 SVN 에 sync</h3><p>이클립스 사용시 적용 -SVN Repository 에 생성되어 있는 Repository<br>마우스 우 클릭 Location Properties 의 URL로 변경<br>relocate 가 수행됨</p>
 
     
     </div>

@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>SpringBoot + Rest Docs + Gradle - Ethan Blog</title>
+<title>Gitlab 설치하기(Docker on Mac) - Ethan Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -123,47 +123,33 @@
     <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            SpringBoot + Rest Docs + Gradle
+            Gitlab 설치하기(Docker on Mac)
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.046Z" itemprop="datePublished">Nov 1 2019</time>
+            <time datetime="2019-11-01T05:48:54.187Z" itemprop="datePublished">Nov 1 2019</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
+            <a class="article-category-link" href="/categories/Technology/">Technology</a>
         </span>
         
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>API를 지속적으로 수정하면서 문서를 수정하는 데는 한계점 있습니다.</p>
-<p>Spring 개발하면서 UI와 함께 간략하게 제공되는 Swagger 와 REST docs가 대표적 입니다.</p>
-<p>Spring 프레임웍으로 개발하면서 Swagger를 사용해 보았고 이번 개발에는 REST docs를 적용해 보기로 했다.</p>
-<p>구글링을 통해 여러 블로그를 찾아서 세팅을 진행 해보았지만 안되는 부분은 <a href="https://docs.spring.io/spring-restdocs/docs/current/reference/html5/" target="_blank" rel="noopener">Spring REST Docs</a> 사이트가 가장 명확하게 가이드를 하고 있으니 참고 하셨으면 합니다.</p>
-<p>Swagger와의 차이는 테스트 코드를 작성해서 문서를 생성해야 한다는 차이가 있습니다.</p>
-<p>테스트 코드로 개발의 정합성을 향상하는 데 큰 도움이 될것으로 생각 됩니다.</p>
-<p>현재의 개발환경은</p>
-<ul>
-<li>Springboot </li>
-<li>Mybatis  </li>
-<li>Gradle</li>
-</ul>
-<p>을 활용하고 있습니다.</p>
-<p>간략하게 세팅해야 하는 부분은 다음과 같습니다.</p>
-<ol>
-<li><p>build.gradle 추가</p>
-</li>
-<li><p>test code 작성</p>
-</li>
-<li><p>adoc 생성</p>
-</li>
-<li><p>html 생성</p>
-</li>
-</ol>
+        <p>Github와 Gitlab 모두 클라우드를 지원하고 있다.<br>다른 설치 없이 가입 레파지토리 생성을 통해 사용할 수 있다.</p>
+<p>자체적으로 Git을 관리하고 있던 것을 서버로 관리하고 코드리뷰를<br>원할하게 하고 싶은 욕구가 생겨서 Gitlab을 설치하고자 했다.</p>
+<p>Gitlab <a href="https://docs.gitlab.com/runner/install/osx.html" target="_blank" rel="noopener">공식 홈페이지</a> 에서 가이드를 제공하고 있다.</p>
+<p>하지만 정상적으로 작동되지 않았다. 현재 사용하고 있는 개발 서버가 맥이기 때문일지도 모르겠지만 다른 방법을 서칭해서 Docker에 gitlab을 설치 하는 방법으로 전환하였다.</p>
+<p>Docker 는 <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">이곳</a> 에서 다운 받아 설치할 수 있다.<br>가입과 로그인은 개별적으로 하자.</p>
+<p>다음과 같이 커멘드를 수행한다.</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach --name gitlab \</span><br><span class="line">    --hostname gitlab.local \</span><br><span class="line">    --publish 30000:30000 \</span><br><span class="line">    --publish 30001:22 \</span><br><span class="line">    --env GITLAB_OMNIBUS_CONFIG=&quot;external_url &apos;http://gitlab.local:30000&apos;;          </span><br><span class="line">    gitlab_rails[&apos;gitlab_shell_ssh_port&apos;]=30000;&quot; \</span><br><span class="line">    gitlab/gitlab-ce:9.1.0-ce.0</span><br></pre></td></tr></table></figure></p>
+<p>publish port 와 external_url 은 개인에 맞게 설정하자.</p>
+<p>해당 커멘드가 오류 없이 수행되면 docker images에 gitlab서버가 수행 중일 것이다.  </p>
+<p><a href="http://gitlab.local:30000" target="_blank" rel="noopener">http://gitlab.local:30000</a> 에 접속하면 깃렙 로그인 화면을 확인할 수 있다.</p>
 
     
     </div>
@@ -178,12 +164,12 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/2019/11/01/old/2018-11-01-gitsvn/">GIT SVN 관련 오류 </a>
+            <a href="/2019/11/01/technology/2019-06-12-javaIPAdress/">Java IP address 사용하기</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/2019/11/01/old/2018-08-30-vscodetip/">VS Code TIP </a>
+            <a href="/2019/11/01/old/2018-06-07-iterator/">Iterator Pattern</a>
             
         </span>
     </div>

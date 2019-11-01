@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>Gradle Build 오류(javax.net.ssl.SSLException) - Ethan Blog</title>
+<title>SpringBoot + Rest Docs + Gradle - Ethan Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -123,28 +123,47 @@
     <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            Gradle Build 오류(javax.net.ssl.SSLException)
+            SpringBoot + Rest Docs + Gradle
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.187Z" itemprop="datePublished">Nov 1 2019</time>
+            <time datetime="2019-11-01T05:50:51.593Z" itemprop="datePublished">Nov 1 2019</time>
         </span>
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
+            <a class="article-category-link" href="/categories/Technology/">Technology</a>
         </span>
         
         
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <p>Sprigboot 에서 Gradle 빌드 수행 </p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javax.net.ssl.SSLException:closing inbound before receiving peer&apos;s close_notify</span><br></pre></td></tr></table></figure></p>
-<p>데이터베이스에 SSL설정이 되어 있지 않아 Springboot gradle 빌드시 발생하는 오류라고 합니다.</p>
-<p>jdbc url 에 다음고 같이 옵션을 추가해 주면 빌드가 정상적으로 수행되는 것을 확인 하였습니다.</p>
-<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ex) jdbc:myslq://localhost:3306?&amp;useSSL=false</span><br></pre></td></tr></table></figure></p>
+        <p>API를 지속적으로 수정하면서 문서를 수정하는 데는 한계점 있습니다.</p>
+<p>Spring 개발하면서 UI와 함께 간략하게 제공되는 Swagger 와 REST docs가 대표적 입니다.</p>
+<p>Spring 프레임웍으로 개발하면서 Swagger를 사용해 보았고 이번 개발에는 REST docs를 적용해 보기로 했다.</p>
+<p>구글링을 통해 여러 블로그를 찾아서 세팅을 진행 해보았지만 안되는 부분은 <a href="https://docs.spring.io/spring-restdocs/docs/current/reference/html5/" target="_blank" rel="noopener">Spring REST Docs</a> 사이트가 가장 명확하게 가이드를 하고 있으니 참고 하셨으면 합니다.</p>
+<p>Swagger와의 차이는 테스트 코드를 작성해서 문서를 생성해야 한다는 차이가 있습니다.</p>
+<p>테스트 코드로 개발의 정합성을 향상하는 데 큰 도움이 될것으로 생각 됩니다.</p>
+<p>현재의 개발환경은</p>
+<ul>
+<li>Springboot </li>
+<li>Mybatis  </li>
+<li>Gradle</li>
+</ul>
+<p>을 활용하고 있습니다.</p>
+<p>간략하게 세팅해야 하는 부분은 다음과 같습니다.</p>
+<ol>
+<li><p>build.gradle 추가</p>
+</li>
+<li><p>test code 작성</p>
+</li>
+<li><p>adoc 생성</p>
+</li>
+<li><p>html 생성</p>
+</li>
+</ol>
 
     
     </div>
@@ -157,14 +176,12 @@
     
     
     <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2019/11/01/old/2018-06-07-iterator/">Iterator Pattern</a>
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/2019/11/01/old/2018-05-29-Json/">JSON 이란</a>
+            <a href="/2019/11/01/technology/2019-07-09-intellijTomcatConfig/">Intellij Tomcat 로그 한글깨짐 현상 </a>
             
         </span>
     </div>
