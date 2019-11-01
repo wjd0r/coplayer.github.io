@@ -123,42 +123,6 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/11/01/old/2018-09-12-IntellijLombok/" itemprop="url">Lombok Intellij install</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.132Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <h1 id="Lombok-Intellij-에서-사용하기"><a href="#Lombok-Intellij-에서-사용하기" class="headerlink" title="Lombok Intellij 에서 사용하기"></a>Lombok Intellij 에서 사용하기</h1><h3 id="Intellij-IDE-gt-Preferences-gt-plug-in"><a href="#Intellij-IDE-gt-Preferences-gt-plug-in" class="headerlink" title="Intellij IDE &gt; Preferences &gt; plug-in"></a>Intellij IDE &gt; Preferences &gt; plug-in</h3><p>lombok 검색 &gt; 설치</p>
-<p><img src="/assets/images/intelljlombok.png" alt></p>
-<p>설치 이후에 intellij 에서 다음과 같은 에러가 발생할 수 있습니다.</p>
-<p>Annotation Processing 활성화 관련 문제 입니다.<br>error log에 다음과 같은 메시지가 출력 됩니다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Annotation processing seems to be disabled for the project &quot;&lt;project name&gt;&quot;.</span><br><span class="line"></span><br><span class="line">For the plugin to function correctly, please enable it under</span><br><span class="line"></span><br><span class="line">&quot;Settings &gt; Build &gt; Compiler &gt; Annotation Processors&quot;</span><br></pre></td></tr></table></figure></p>
-<p>intellij ide &gt; proferences &gt; build, excution, deploymont 탭 &gt; compiler &gt; annotation processors &gt; Enable annotaion procsssing 를 체크 하여 적용합니다.</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
             <a href="/2019/11/01/old/2018-05-29-Markdown/" itemprop="url">MarkDown 마크다운 문법</a>
         
     </h1>
@@ -397,7 +361,7 @@ SELECT SYSDATE + (INTERVAL '1' YEAR) FROM DUAL       --1년 더하기
 <h1 id="5-Like절-‘-’-사용법"><a href="#5-Like절-‘-’-사용법" class="headerlink" title="5. Like절 ‘%’ 사용법"></a>5. Like절 ‘%’ 사용법</h1><p>Oracle : Like ‘%’||’문자’||’%’ 이런식으로 컬럼명 앞뒤로 ‘%’<br>Mysql : LIKE CONCAT(‘문자’,’%’) 이런식으로 CONCAT 함수 사용</p>
 <hr>
 <h1 id="6-형변환"><a href="#6-형변환" class="headerlink" title="6. 형변환"></a>6. 형변환</h1><p>Oracle : To_char, To_number 등<br>Mysql : CAST  </p>
-<h2 id="72"><a href="#72" class="headerlink" title="72"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Value       Description</span><br><span class="line">DATE	    Converts value to DATE. Format: &quot;YYYY-MM-DD&quot;</span><br><span class="line">DATETIME    Converts value to DATETIME. Format: &quot;YYYY-MM-DD HH:MM:SS&quot;</span><br><span class="line">TIME	    Converts value to TIME. Format: &quot;HH:MM:SS&quot;</span><br><span class="line">CHAR	    Converts value to CHAR (a fixed length string)</span><br><span class="line">SIGNED	    Converts value to SIGNED (a signed 64-bit integer)</span><br><span class="line">UNSIGNED    Converts value to UNSIGNED (an unsigned 64-bit integer)</span><br><span class="line">BINARY	    Converts value to BINARY (a binary string)</span><br></pre></td></tr></table></figure></h2><h1 id="7-ROWNUM"><a href="#7-ROWNUM" class="headerlink" title="7. ROWNUM"></a>7. ROWNUM</h1><p>Oracle : where 절에 rownum &gt; 5 and rownum =&lt; 10<br>Mysql : where절 없이 limit 5,10</p>
+<h2 id="70"><a href="#70" class="headerlink" title="70"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Value       Description</span><br><span class="line">DATE	    Converts value to DATE. Format: &quot;YYYY-MM-DD&quot;</span><br><span class="line">DATETIME    Converts value to DATETIME. Format: &quot;YYYY-MM-DD HH:MM:SS&quot;</span><br><span class="line">TIME	    Converts value to TIME. Format: &quot;HH:MM:SS&quot;</span><br><span class="line">CHAR	    Converts value to CHAR (a fixed length string)</span><br><span class="line">SIGNED	    Converts value to SIGNED (a signed 64-bit integer)</span><br><span class="line">UNSIGNED    Converts value to UNSIGNED (an unsigned 64-bit integer)</span><br><span class="line">BINARY	    Converts value to BINARY (a binary string)</span><br></pre></td></tr></table></figure></h2><h1 id="7-ROWNUM"><a href="#7-ROWNUM" class="headerlink" title="7. ROWNUM"></a>7. ROWNUM</h1><p>Oracle : where 절에 rownum &gt; 5 and rownum =&lt; 10<br>Mysql : where절 없이 limit 5,10</p>
 <hr>
 <h1 id="8-Sequence-시퀀스-는-둘-다-사용자함수를-만들어서-아래와-같이-사용"><a href="#8-Sequence-시퀀스-는-둘-다-사용자함수를-만들어서-아래와-같이-사용" class="headerlink" title="8. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용"></a>8. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용</h1><p>Oracle : 시퀀스명.nextval<br>Mysql : 시퀀스명.currval</p>
 <hr>
@@ -656,6 +620,57 @@ SELECT SYSDATE + (INTERVAL '1' YEAR) FROM DUAL       --1년 더하기
 <li>프로그램 숨기기 : command + h</li>
 </ol>
 <h2 id="mac에서-tomcat-service-가-살아-있을때"><a href="#mac에서-tomcat-service-가-살아-있을때" class="headerlink" title="mac에서 tomcat service 가 살아 있을때"></a>mac에서 tomcat service 가 살아 있을때</h2><p>process 를 종료한다.<br>$ sudo lsof -i :8080<br>$ 패스워드 입력<br>$ kill -9 위에서찾는PID값을넣는다</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-11-22-LinuxCommand2/" itemprop="url">Linux 명령어(top, free, grep option) </a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.071Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h2 id="1-시스템의-메모리-정보-파일-출력"><a href="#1-시스템의-메모리-정보-파일-출력" class="headerlink" title="1. 시스템의 메모리 정보 파일 출력"></a>1. 시스템의 메모리 정보 파일 출력</h2><h2 id="72"><a href="#72" class="headerlink" title="72"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/meminfo</span><br></pre></td></tr></table></figure></h2><h2 id="2-시스템-프로세스-상세-내용보기"><a href="#2-시스템-프로세스-상세-내용보기" class="headerlink" title="2. 시스템 프로세스 상세 내용보기"></a>2. 시스템 프로세스 상세 내용보기</h2><ul>
+<li>윈도우의 작업 관리자와 비슷한 형태를 띈다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure></li>
+<li>출력 내용 상세 설명  </li>
+</ul>
+<blockquote>
+<p>[PID] : 프로세스 ID<br>[USER] : 프로세스를 실행시킨 사용자 ID<br>[PR] : 프로세스의 우선순위<br>[NI] : NICE 값, 마이너스를 가지는 값이 우선순위가 높음<br>[VIRT] : 가상 메모리의 사용량(SWAP+RES)<br>[RES] : 현재 페이지가 상주하고 있는 크기<br>[SHR] : 가상 메모리 중 사용중인 메모리를 제외한 잔여 가상 메모리<br>[S] : 프로세스의 상태<br>[%CPU] : 프로세스가 사용하는 CPU의 사용률<br>[%MEM] : 프로세스가 사용하는 메모리의 사용률<br>[TIME+] : 프로세스가 CPU를 사용한 시간<br>[COMMAND] : 실행된 명령어  </p>
+</blockquote>
+<blockquote>
+<p>SHIFT + M 메모리 사용률 정렬<br>SHIFT + N PID 기준 정렬<br>SHIFT + P CPU 사용률 정렬<br>SHIFT + T 실행시간 기준 정렬<br>SHIFT + R 정렬 기준변경</p>
+</blockquote>
+<hr>
+<h2 id="3-메모리-모니터링"><a href="#3-메모리-모니터링" class="headerlink" title="3. 메모리 모니터링"></a>3. 메모리 모니터링</h2><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="4-디스크-모니터링"><a href="#4-디스크-모니터링" class="headerlink" title="4. 디스크 모니터링"></a>4. 디스크 모니터링</h2><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>[-h] : 용량을 읽기 쉽게 단위를 계산하여 출력<br>[-T] : 파일 시스템 종류와 함께 디스크 정보 출력</p>
+</blockquote>
+<hr>
+<h2 id="5-grep-option"><a href="#5-grep-option" class="headerlink" title="5. grep option"></a>5. grep option</h2><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep</span><br></pre></td></tr></table></figure></p>
+<p>-E, –extended-regexp : 확장 정규표현식으로 패턴을 해석한다(=egrep 같은 의미)<br>-F, –fixed-strings : newline으로 분리된 고정된 문자열의 리스트로써 패턴을 해석한다</p>
 
     
     </div>

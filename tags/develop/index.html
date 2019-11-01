@@ -425,46 +425,6 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/11/01/old/2018-05-30-StudySite/" itemprop="url">개발에 공부에 도움이 되는 사이트 모아보기</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.183Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>개발에 관련되서 강의나 사이트가 수도 없이 많은 만큼<br>옥석을 가리는 것도 그만큼 중요한 일이 되었다.</p>
-<p>개인적으로 좋은 사이트를 모아놓자.</p>
-<hr>
-<h3 id="생활코딩"><a href="#생활코딩" class="headerlink" title="- 생활코딩"></a>- <a href="https://opentutorials.org/course/1" target="_blank" rel="noopener">생활코딩</a></h3><p>웹 개발관련해서 공부를 시작한 국내 사람이라면 한번쯤은 들어가본 사이트가 아닐까? 개인적으로는 web1 강의를 보고 개발이란? 에 대해서 다시 생각해보게 되었다. </p>
-<h3 id="프로그래머스"><a href="#프로그래머스" class="headerlink" title="- 프로그래머스"></a>- <a href="https://programmers.co.kr/" target="_blank" rel="noopener">프로그래머스</a></h3><p>동영상 강의 및 알고리즘연습 환경을 제공한다. vscode와 거의 동일한 코딩 환경을 지원 문제수나 종류가 많아지면 알고리즘 연습하기 좋은 사이트가 될것 같다.</p>
-<h3 id="엔지니어대한민국-YouTube채널"><a href="#엔지니어대한민국-YouTube채널" class="headerlink" title="- 엔지니어대한민국 YouTube채널"></a>- 엔지니어대한민국 <a href="https://www.youtube.com/channel/UCWMAh9cSkEn8v42YRO90BHA" target="_blank" rel="noopener">YouTube채널</a></h3><p>웹 서핑을 하다가 우연히 알게된 유툽 영상의 편집이 강의지만 속도감 있고 기본적인 자료구조 설명부터 기초적인 알고리즘 구조에 대해서 이론을 설명하고 코드로 보여준다.<br>직접 구현하시는 코드가 자바로 구성되어 있고 객체지향성이 눈에 띈다.</p>
-<h3 id="Wikidocs"><a href="#Wikidocs" class="headerlink" title="- Wikidocs"></a>- <a href="https://wikidocs.net/" target="_blank" rel="noopener">Wikidocs</a></h3><p>온라인 책 제작 공유사이트(개발관련 서적이 다수) 점프투 파이썬, 점프투 자바 등등</p>
-<h3 id="인프런"><a href="#인프런" class="headerlink" title="- 인프런"></a>- <a href="https://www.inflearn.com/" target="_blank" rel="noopener">인프런</a></h3><p>양질의 무료강의와 유료강의 등 (<a href="https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C/" target="_blank" rel="noopener">Recursion을 이해하기 좋은 강의</a>)</p>
-<h3 id="BOJ"><a href="#BOJ" class="headerlink" title="- BOJ"></a>- <a href="https://www.acmicpc.net/" target="_blank" rel="noopener">BOJ</a></h3><p>기초부터 고급까지 방대한 문제, 커뮤니티가 활성화 되어 있어 질문하기 좋은 곳이다.</p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
             <a href="/2019/11/01/old/2018-08-16-Logback/" itemprop="url">Spring MVC 에서 LOGBack 설정 그리고 log4jdbc 설정</a>
         
     </h1>
@@ -543,6 +503,49 @@
 <li>컬럼을 MAX 채번 하기</li>
 </ol>
 <p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">SELECT NVL(MAX(컬럼) ,1) FROM TABLE WHERE PK = PK </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SEQUENCE </span><br><span class="line"></span><br><span class="line">시퀀스 생성</span><br><span class="line">CREATE SEQUENCE &quot;시퀀스명&quot; </span><br><span class="line">구조 확인</span><br><span class="line">DESC USER_SEQUENCES</span><br><span class="line">시퀀스 값 사용</span><br><span class="line">&quot;시퀀스&quot;.NEXTVAL =&gt; 현재 시퀀스의 다음 증가값 반환</span><br><span class="line">&quot;시퀀스&quot;.CURRVAL =&gt; 현재 시퀀스 값 반환</span><br><span class="line"></span><br><span class="line">ㆍSTART WITH : 시작값 지정</span><br><span class="line">ㆍINCREMENT BY : 연속적인 증가치 지정</span><br><span class="line">ㆍMAXVALUE: 가질 수 있는 최대값 지정</span><br><span class="line">ㆍMINVALUE : 가질 수 있는 최소값 지정</span><br><span class="line">ㆍCYCLE: 지정된 최대값까지 증가되면 START WITH 로 지정한 시작값에서 다시 시작</span><br><span class="line">   ※ NOCYCLE : 최대값까지 증가가 완료되면 에러 발생</span><br><span class="line">ㆍCACHE : 메모리상의 시퀀스값 관리, 기본값은 20 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">시퀀스 삭제</span><br><span class="line">DROP SEQUENCE &quot;시퀀스&quot;</span><br><span class="line"></span><br><span class="line">시퀀스 수정</span><br><span class="line">ALTER SEQUENCE &quot;시퀀스&quot; &quot;변경할 속성&quot; &quot;숫자&quot;</span><br><span class="line">※ 시작숫자(START WITH)는 변경할 수 없음, 시퀀스를 새로 생성해야만 함</span><br></pre></td></tr></table></figure></p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-11-01-SvnToGit/" itemprop="url">SVN 을 GIT 으로 이관하기 (git svn)</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.176Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>SVN 으로 형상관리 하던 소스를 GIT으로 이전하기 위해서 포스팅을 정리해 봅니다.</p>
+<p>SVN을 오래 동안 써 왔고 큰 어려움이 없이 사용해 왔습니다.  </p>
+<p>단일 프로젝트를 주로 진행해 왔고 모듈을 나눠서 개발하다보면 GIT의 필요성을<br>그다지 느끼기 어렵다고 생각합니다.</p>
+<p>하지만 운영 되고 있는 서비스를 각각의 개발자가 신규 개발과 오류 수정하면서<br>코드를 리펙토링 하기위한 활동 또는 신규 테스트를 위해서는 형상 관리의 유연성과 통합이 쉽게 이루어 져야 합니다.</p>
+<p>비슷한 기능은 svn에서도 가능합니다.<br>다만 같은 기능을 하더라도 빠르고 유연한 대처가 가능하다고 말씀 드리고 싶습니다.<br>해당 포스팅은 svn 과 git은 설치 되었다는 전제로 진행합니다.</p>
+<h3 id="1-git-svn-설치-합니다"><a href="#1-git-svn-설치-합니다" class="headerlink" title="1. git-svn 설치 합니다."></a>1. git-svn 설치 합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-svn</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-이관하기-위한-환경이-되었는지를-확인합니다"><a href="#2-이관하기-위한-환경이-되었는지를-확인합니다" class="headerlink" title="2. 이관하기 위한 환경이 되었는지를 확인합니다."></a>2. 이관하기 위한 환경이 되었는지를 확인합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://bitbucket.org/atlassian/svn-migration-scripts/src</span><br></pre></td></tr></table></figure><br> 사이트에서 다운받기<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -jar svn-migration-scripts.jar verify</span><br></pre></td></tr></table></figure><br> 명령어로 확인합니다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Git: using version </span><br><span class="line">Subversion: using version</span><br><span class="line">git-svn: using version</span><br></pre></td></tr></table></figure><br> 준비된 상태이면 위와 같은 출력이 설치된 버전에 따라 보입니다.</p>
+<h3 id="3-svn-소스를-git-의-형태로-clone-합니다"><a href="#3-svn-소스를-git-의-형태로-clone-합니다" class="headerlink" title="3. svn 소스를 git 의 형태로 clone 합니다."></a>3. svn 소스를 git 의 형태로 clone 합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git svn clone 프로젝트svn주소 --no-metadata  프로젝트이름</span><br></pre></td></tr></table></figure><br> 이 과정 전에 다른 포스팅들에서는 사용자정보를 git 형태로 변환하는 과정들이 있습니다.<br> 과정 중에 큰 이슈가 발생하지 않아 그대로 진행 했습니다.<br><a href="http://lux.cuenet.kr/21" target="_blank" rel="noopener">참고 페이지 링크 </a></p>
+<h3 id="4-git-서버-repository를-생성합니다"><a href="#4-git-서버-repository를-생성합니다" class="headerlink" title="4. git 서버 repository를 생성합니다."></a>4. git 서버 repository를 생성합니다.</h3><p> git 서버에 .git 폴더를 생성하고 다음 명령어를 수행하여 레파지토리로 생성합니다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git --bare init</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-git-의-remote-설정을-진행합니다"><a href="#5-git-의-remote-설정을-진행합니다" class="headerlink" title="5. git 의 remote 설정을 진행합니다."></a>5. git 의 remote 설정을 진행합니다.</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin 프로젝트git주소</span><br></pre></td></tr></table></figure><br> remote 설정</p>
+<h3 id="6-git-push"><a href="#6-git-push" class="headerlink" title="6. git push"></a>6. git push</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure><br> 정상적으로 remote에 소스가 push 되었는지 확인합니다.</p>
+<p>위 과정을 통해서 간단하게 svn으로 관리하는 소스를 git이로 이관하여 관리할 수 있습니다.</p>
 
     
     </div>
