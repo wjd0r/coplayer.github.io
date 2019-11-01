@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>Oracle 명령어 및 TIP  - Ethan Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119771582-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119771582-1');
+</script>
+
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Ethan Blog
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item "
+               href="/categories/LifeStyle">Lifestyle</a>
+            
+            <a class="navbar-item "
+               href="/categories/Technology">Technology</a>
+            
+            <a class="navbar-item "
+               href="/categories/Old">Old</a>
+            
+            <a class="navbar-item "
+               href="/archives">Archives</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            <div class="navbar-item is-hoverable has-dropdown is-hidden-mobile is-hidden-tablet-only toc">
+                <a class="navbar-item" title="Table of Contents">
+                    <i class="fa fa-list"></i>
+                </a>
+                <div class="navbar-dropdown is-right">
+                    
+                    
+                    
+                    
+                    <a class="navbar-item" href="#Oracle-컬럼-속성-추가-삭제">1&nbsp;&nbsp;<b>- Oracle 컬럼 속성 추가 삭제</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#9">2&nbsp;&nbsp;<b>12345alter table 테이블명 add(컬럼 속성명());alter table 테이블명 rename column 컬럼명 to 변경컬럼명;alter table 테이블명 modify(컬럼명 속성명());</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#xml-특수문자-이스케이프">3&nbsp;&nbsp;<b>-  xml 특수문자 이스케이프</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#ORACLE-ORA-01861-literal-does-not-match-format-string">4&nbsp;&nbsp;<b>- ORACLE ORA-01861: literal does not match format string</b></a>
+                    
+                    
+                    <hr class="navbar-divider">
+                    
+                    
+                    <a class="navbar-item" href="#채번하기-자릿수-LPAD-SEQUENCE">5&nbsp;&nbsp;<b>- 채번하기 자릿수 LPAD, SEQUENCE</b></a>
+                    
+                </div>
+            </div>
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/coplayer" target="_blank" rel="noopener">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Oracle 명령어 및 TIP 
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.179Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>티스토리에 포스팅을 다시 가지고 왔습니다.</p>
+<h2 id="Oracle-컬럼-속성-추가-삭제"><a href="#Oracle-컬럼-속성-추가-삭제" class="headerlink" title="- Oracle 컬럼 속성 추가 삭제"></a>- Oracle 컬럼 속성 추가 삭제</h2><p>Oracle DB 사용할 때 이상하게도 매번 찾아보게 되는 컬럼 추가 삭제</p>
+<h2 id="9"><a href="#9" class="headerlink" title="9"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&amp; : &amp;amp;</span><br><span class="line">&lt; : &amp;lt;</span><br><span class="line">&gt; : &amp;gt;</span><br><span class="line">‘ : &amp;apos;</span><br><span class="line">” : &amp;quot;</span><br><span class="line">엔터 : &amp;#10;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ORACLE-ORA-01861-literal-does-not-match-format-string"><a href="#ORACLE-ORA-01861-literal-does-not-match-format-string" class="headerlink" title="- ORACLE ORA-01861: literal does not match format string"></a>- ORACLE ORA-01861: literal does not match format string</h2><p><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ORACLE DATE 컬럼을 문자로 조회시 자주 발생하는 에러</span><br><span class="line"></span><br><span class="line">조건절에 좌변의 DATE 객채를 TO_CAHR 포맷으로 CAST </span><br><span class="line"></span><br><span class="line">예) TO_CHAR(컬럼, 'YYYYMMDD')</span><br></pre></td></tr></table></figure></p>
+<h2 id="채번하기-자릿수-LPAD-SEQUENCE"><a href="#채번하기-자릿수-LPAD-SEQUENCE" class="headerlink" title="- 채번하기 자릿수 LPAD, SEQUENCE"></a>- 채번하기 자릿수 LPAD, SEQUENCE</h2><p> 수동으로 채번 할때 많이 사용한다.</p>
+<ol>
+<li>LPAD  자릿수<br>SELECT LPAD(컬럼, 자릿수, 채울문자나 숫자) FROM DUAL;</li>
+</ol>
+<ol start="2">
+<li>컬럼을 MAX 채번 하기</li>
+</ol>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">SELECT NVL(MAX(컬럼) ,1) FROM TABLE WHERE PK = PK </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SEQUENCE </span><br><span class="line"></span><br><span class="line">시퀀스 생성</span><br><span class="line">CREATE SEQUENCE &quot;시퀀스명&quot; </span><br><span class="line">구조 확인</span><br><span class="line">DESC USER_SEQUENCES</span><br><span class="line">시퀀스 값 사용</span><br><span class="line">&quot;시퀀스&quot;.NEXTVAL =&gt; 현재 시퀀스의 다음 증가값 반환</span><br><span class="line">&quot;시퀀스&quot;.CURRVAL =&gt; 현재 시퀀스 값 반환</span><br><span class="line"></span><br><span class="line">ㆍSTART WITH : 시작값 지정</span><br><span class="line">ㆍINCREMENT BY : 연속적인 증가치 지정</span><br><span class="line">ㆍMAXVALUE: 가질 수 있는 최대값 지정</span><br><span class="line">ㆍMINVALUE : 가질 수 있는 최소값 지정</span><br><span class="line">ㆍCYCLE: 지정된 최대값까지 증가되면 START WITH 로 지정한 시작값에서 다시 시작</span><br><span class="line">   ※ NOCYCLE : 최대값까지 증가가 완료되면 에러 발생</span><br><span class="line">ㆍCACHE : 메모리상의 시퀀스값 관리, 기본값은 20 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">시퀀스 삭제</span><br><span class="line">DROP SEQUENCE &quot;시퀀스&quot;</span><br><span class="line"></span><br><span class="line">시퀀스 수정</span><br><span class="line">ALTER SEQUENCE &quot;시퀀스&quot; &quot;변경할 속성&quot; &quot;숫자&quot;</span><br><span class="line">※ 시작숫자(START WITH)는 변경할 수 없음, 시퀀스를 새로 생성해야만 함</span><br></pre></td></tr></table></figure></p>
+
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/develop/">#develop</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/11/01/old/2018-08-16-Logback/">Spring MVC 에서 LOGBack 설정 그리고 log4jdbc 설정</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/11/01/old/2018-11-01-SvnToGit/">SVN 을 GIT 으로 이관하기 (git svn)</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 Ethan&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
