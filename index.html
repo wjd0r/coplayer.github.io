@@ -161,37 +161,6 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2019/11/01/lifestyle/lifestyle-just-think-md/" itemprop="url">생각 정</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T06:52:07.000Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Lifestyle/">Lifestyle</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
             <a href="/2019/11/01/technology/2019-07-11-springbootRestDocsGradle/" itemprop="url">SpringBoot + Rest Docs + Gradle</a>
         
     </h1>
@@ -528,6 +497,50 @@
 <p>사용하다보니 log4jdbc.properties 설정을 찾는 메세지를 발견했습니다.</p>
 <p>resouce 폴더에 다음과 같이 log4jdbc.properties 파일을 추가합니다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator</span><br></pre></td></tr></table></figure></p>
 <p>이렇게 설정하여 저는 로그를 확인하고 있습니다. 다만 logback에 log4jdbc 설정을 하므로 성능에 어떠한 영향을 미치는 지까지는 확인해보지 못하였습니다. 포스팅을 보시고 성능에 문제가 되신다면 jdbc 설정을 제외하고 적용하시면 됩니다.</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2019/11/01/old/2018-06-01-oracleTip/" itemprop="url">Oracle 명령어 및 TIP </a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.179Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>티스토리에 포스팅을 다시 가지고 왔습니다.</p>
+<h2 id="Oracle-컬럼-속성-추가-삭제"><a href="#Oracle-컬럼-속성-추가-삭제" class="headerlink" title="- Oracle 컬럼 속성 추가 삭제"></a>- Oracle 컬럼 속성 추가 삭제</h2><p>Oracle DB 사용할 때 이상하게도 매번 찾아보게 되는 컬럼 추가 삭제</p>
+<h2 id="15"><a href="#15" class="headerlink" title="15"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&amp; : &amp;amp;</span><br><span class="line">&lt; : &amp;lt;</span><br><span class="line">&gt; : &amp;gt;</span><br><span class="line">‘ : &amp;apos;</span><br><span class="line">” : &amp;quot;</span><br><span class="line">엔터 : &amp;#10;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ORACLE-ORA-01861-literal-does-not-match-format-string"><a href="#ORACLE-ORA-01861-literal-does-not-match-format-string" class="headerlink" title="- ORACLE ORA-01861: literal does not match format string"></a>- ORACLE ORA-01861: literal does not match format string</h2><p><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ORACLE DATE 컬럼을 문자로 조회시 자주 발생하는 에러</span><br><span class="line"></span><br><span class="line">조건절에 좌변의 DATE 객채를 TO_CAHR 포맷으로 CAST </span><br><span class="line"></span><br><span class="line">예) TO_CHAR(컬럼, 'YYYYMMDD')</span><br></pre></td></tr></table></figure></p>
+<h2 id="채번하기-자릿수-LPAD-SEQUENCE"><a href="#채번하기-자릿수-LPAD-SEQUENCE" class="headerlink" title="- 채번하기 자릿수 LPAD, SEQUENCE"></a>- 채번하기 자릿수 LPAD, SEQUENCE</h2><p> 수동으로 채번 할때 많이 사용한다.</p>
+<ol>
+<li>LPAD  자릿수<br>SELECT LPAD(컬럼, 자릿수, 채울문자나 숫자) FROM DUAL;</li>
+</ol>
+<ol start="2">
+<li>컬럼을 MAX 채번 하기</li>
+</ol>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">SELECT NVL(MAX(컬럼) ,1) FROM TABLE WHERE PK = PK </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SEQUENCE </span><br><span class="line"></span><br><span class="line">시퀀스 생성</span><br><span class="line">CREATE SEQUENCE &quot;시퀀스명&quot; </span><br><span class="line">구조 확인</span><br><span class="line">DESC USER_SEQUENCES</span><br><span class="line">시퀀스 값 사용</span><br><span class="line">&quot;시퀀스&quot;.NEXTVAL =&gt; 현재 시퀀스의 다음 증가값 반환</span><br><span class="line">&quot;시퀀스&quot;.CURRVAL =&gt; 현재 시퀀스 값 반환</span><br><span class="line"></span><br><span class="line">ㆍSTART WITH : 시작값 지정</span><br><span class="line">ㆍINCREMENT BY : 연속적인 증가치 지정</span><br><span class="line">ㆍMAXVALUE: 가질 수 있는 최대값 지정</span><br><span class="line">ㆍMINVALUE : 가질 수 있는 최소값 지정</span><br><span class="line">ㆍCYCLE: 지정된 최대값까지 증가되면 START WITH 로 지정한 시작값에서 다시 시작</span><br><span class="line">   ※ NOCYCLE : 최대값까지 증가가 완료되면 에러 발생</span><br><span class="line">ㆍCACHE : 메모리상의 시퀀스값 관리, 기본값은 20 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">시퀀스 삭제</span><br><span class="line">DROP SEQUENCE &quot;시퀀스&quot;</span><br><span class="line"></span><br><span class="line">시퀀스 수정</span><br><span class="line">ALTER SEQUENCE &quot;시퀀스&quot; &quot;변경할 속성&quot; &quot;숫자&quot;</span><br><span class="line">※ 시작숫자(START WITH)는 변경할 수 없음, 시퀀스를 새로 생성해야만 함</span><br></pre></td></tr></table></figure></p>
 
     
     </div>
