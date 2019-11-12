@@ -116,6 +116,55 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2019/11/01/old/2018-11-21-OracleMysql/" itemprop="url">oracle 명령어와 동일한 mysql 명령어</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.085Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="1-공백치환-함수-NVL-gt-IFNULL"><a href="#1-공백치환-함수-NVL-gt-IFNULL" class="headerlink" title="1. 공백치환 함수 ( NVL -&gt; IFNULL )"></a>1. 공백치환 함수 ( NVL -&gt; IFNULL )</h1><p>Oracle : SELECT NVL(‘컬럼명’, ‘’) FROM DUAL;<br>MySql : SELECT IFNULL(‘컬럼명’, ‘’) FROM DUAL;</p>
+<hr>
+<h1 id="2-현재-날짜시간"><a href="#2-현재-날짜시간" class="headerlink" title="2. 현재 날짜시간"></a>2. 현재 날짜시간</h1><p>Oracle : SYSDATE<br>Mysql  : NOW() </p>
+<hr>
+<h1 id="3-날짜포멧"><a href="#3-날짜포멧" class="headerlink" title="3. 날짜포멧"></a>3. 날짜포멧</h1><p>Oracle : TO_CHAR(sysdate,’MMDDYYYYHH24MISS’)<br>Mysql  : DATE_FORMAT(now(),’%Y%m%d%H%i%s’)  -&gt; 여기서 대문자Y는 4자리 년도, 소문자 y는 2자리 년도</p>
+<hr>
+<h1 id="4-날짜-포멧-요일"><a href="#4-날짜-포멧-요일" class="headerlink" title="4. 날짜 포멧 : 요일"></a>4. 날짜 포멧 : 요일</h1><p>Oracle : 요일이 1<del>7로 인식함  -&gt; TO_CHAR(SYSDATE - 1, ‘D’)<br>Mysql : 요일이 0</del>6으로 인식   -&gt; DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 DAY), ‘%w’)</p>
+<hr>
+<h1 id="5-Like절-‘-’-사용법"><a href="#5-Like절-‘-’-사용법" class="headerlink" title="5. Like절 ‘%’ 사용법"></a>5. Like절 ‘%’ 사용법</h1><p>Oracle : Like ‘%’||’문자’||’%’ 이런식으로 컬럼명 앞뒤로 ‘%’<br>Mysql : LIKE CONCAT(‘문자’,’%’) 이런식으로 CONCAT 함수 사용</p>
+<hr>
+<h1 id="6-형변환"><a href="#6-형변환" class="headerlink" title="6. 형변환"></a>6. 형변환</h1><p>Oracle : To_char, To_number 등<br>Mysql : CAST  </p>
+<h2 id="67"><a href="#67" class="headerlink" title="67"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Value       Description</span><br><span class="line">DATE	    Converts value to DATE. Format: &quot;YYYY-MM-DD&quot;</span><br><span class="line">DATETIME    Converts value to DATETIME. Format: &quot;YYYY-MM-DD HH:MM:SS&quot;</span><br><span class="line">TIME	    Converts value to TIME. Format: &quot;HH:MM:SS&quot;</span><br><span class="line">CHAR	    Converts value to CHAR (a fixed length string)</span><br><span class="line">SIGNED	    Converts value to SIGNED (a signed 64-bit integer)</span><br><span class="line">UNSIGNED    Converts value to UNSIGNED (an unsigned 64-bit integer)</span><br><span class="line">BINARY	    Converts value to BINARY (a binary string)</span><br></pre></td></tr></table></figure></h2><h1 id="7-ROWNUM"><a href="#7-ROWNUM" class="headerlink" title="7. ROWNUM"></a>7. ROWNUM</h1><p>Oracle : where 절에 rownum &gt; 5 and rownum =&lt; 10<br>Mysql : where절 없이 limit 5,10</p>
+<hr>
+<h1 id="8-Sequence-시퀀스-는-둘-다-사용자함수를-만들어서-아래와-같이-사용"><a href="#8-Sequence-시퀀스-는-둘-다-사용자함수를-만들어서-아래와-같이-사용" class="headerlink" title="8. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용"></a>8. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용</h1><p>Oracle : 시퀀스명.nextval<br>Mysql : 시퀀스명.currval</p>
+<hr>
+<h1 id="9-문자열-자르기"><a href="#9-문자열-자르기" class="headerlink" title="9. 문자열 자르기"></a>9. 문자열 자르기</h1><p>Oracle: SUBSTR(문자열, 1, 10)<br>Mysql: SUBSTRING(문자열, 1,10), LEFT(문자열, 3), RIGHT(문자열, 3)</p>
+<hr>
+<h1 id="10-문자열-합치기"><a href="#10-문자열-합치기" class="headerlink" title="10. 문자열 합치기"></a>10. 문자열 합치기</h1><p>Oracle: 문자열(또는 컬럼) || ‘’<br>Mysql: CONCAT(문자열(또는 컬럼), ‘’)</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2019/11/01/old/2018-05-29-SVN/" itemprop="url">SVN</a>
         
     </h1>
@@ -567,39 +616,6 @@ assertNotNull(a)    a객체가 Null이 아님을 확인한다.
 <li><a href="http://wonwoo.ml/index.php/post/1607" target="_blank" rel="noopener">http://wonwoo.ml/index.php/post/1607</a></li>
 <li><a href="http://www.daleseo.com/lombok-popular-annotations/" target="_blank" rel="noopener">http://www.daleseo.com/lombok-popular-annotations/</a></li>
 </ul>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2018-11-01-gitsvn/" itemprop="url">GIT SVN 관련 오류 </a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.049Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <h3 id="mac-git-svn-사용시-sourcetree에서-push를-실행하면-발생하는-문제-해결"><a href="#mac-git-svn-사용시-sourcetree에서-push를-실행하면-발생하는-문제-해결" class="headerlink" title="mac - git svn 사용시 sourcetree에서 push를 실행하면 발생하는 문제 해결"></a>mac - git svn 사용시 sourcetree에서 push를 실행하면 발생하는 문제 해결</h3><p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /Library/Perl/5.18/auto</span><br><span class="line">sudo ln -s /Applications/Xcode.app/Contents/Developer/Library/Perl/5.18/darwin-thread-multi‌-2level/SVN /Library/Perl/5.18/darwin-thread-multi-2level</span><br><span class="line">sudo ln -s /Applications/Xcode.app/Contents/Developer/Library/Perl/5.18/darwin-thread-multi‌-2level/auto/SVN /Library/Perl/5.18/auto/</span><br></pre></td></tr></table></figure><br>참고 - <a href="https://stackoverflow.com/questions/16578465/on-osx-using-sourcetree-git-svn-getting-cant-locate-svn-core-pm-in-inc" target="_blank" rel="noopener">stackoverflow</a>  </p>
-<p>정상 구동되는 것을 확인하였다.</p>
 
     
     </div>

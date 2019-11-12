@@ -116,6 +116,50 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2019/11/01/old/2018-06-01-oracleTip/" itemprop="url">Oracle 명령어 및 TIP </a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.179Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>티스토리에 포스팅을 다시 가지고 왔습니다.</p>
+<h2 id="Oracle-컬럼-속성-추가-삭제"><a href="#Oracle-컬럼-속성-추가-삭제" class="headerlink" title="- Oracle 컬럼 속성 추가 삭제"></a>- Oracle 컬럼 속성 추가 삭제</h2><p>Oracle DB 사용할 때 이상하게도 매번 찾아보게 되는 컬럼 추가 삭제</p>
+<h2 id="15"><a href="#15" class="headerlink" title="15"></a><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">add</span>(컬럼 속성명());</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">rename</span> <span class="hljs-keyword">column</span> 컬럼명 <span class="hljs-keyword">to</span> 변경컬럼명;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 테이블명 <span class="hljs-keyword">modify</span>(컬럼명 속성명());</span><br></pre></td></tr></table></figure></h2><h2 id="xml-특수문자-이스케이프"><a href="#xml-특수문자-이스케이프" class="headerlink" title="-  xml 특수문자 이스케이프"></a>-  xml 특수문자 이스케이프</h2><p>xml 작성시에 종종 오류를 발생하게 하는 특수문자 변환 코드</p>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&amp; : &amp;amp;</span><br><span class="line">&lt; : &amp;lt;</span><br><span class="line">&gt; : &amp;gt;</span><br><span class="line">‘ : &amp;apos;</span><br><span class="line">” : &amp;quot;</span><br><span class="line">엔터 : &amp;#10;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ORACLE-ORA-01861-literal-does-not-match-format-string"><a href="#ORACLE-ORA-01861-literal-does-not-match-format-string" class="headerlink" title="- ORACLE ORA-01861: literal does not match format string"></a>- ORACLE ORA-01861: literal does not match format string</h2><p><figure class="highlight sql hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ORACLE DATE 컬럼을 문자로 조회시 자주 발생하는 에러</span><br><span class="line"></span><br><span class="line">조건절에 좌변의 DATE 객채를 TO_CAHR 포맷으로 CAST </span><br><span class="line"></span><br><span class="line">예) TO_CHAR(컬럼, 'YYYYMMDD')</span><br></pre></td></tr></table></figure></p>
+<h2 id="채번하기-자릿수-LPAD-SEQUENCE"><a href="#채번하기-자릿수-LPAD-SEQUENCE" class="headerlink" title="- 채번하기 자릿수 LPAD, SEQUENCE"></a>- 채번하기 자릿수 LPAD, SEQUENCE</h2><p> 수동으로 채번 할때 많이 사용한다.</p>
+<ol>
+<li>LPAD  자릿수<br>SELECT LPAD(컬럼, 자릿수, 채울문자나 숫자) FROM DUAL;</li>
+</ol>
+<ol start="2">
+<li>컬럼을 MAX 채번 하기</li>
+</ol>
+<p><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">SELECT NVL(MAX(컬럼) ,1) FROM TABLE WHERE PK = PK </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SEQUENCE </span><br><span class="line"></span><br><span class="line">시퀀스 생성</span><br><span class="line">CREATE SEQUENCE &quot;시퀀스명&quot; </span><br><span class="line">구조 확인</span><br><span class="line">DESC USER_SEQUENCES</span><br><span class="line">시퀀스 값 사용</span><br><span class="line">&quot;시퀀스&quot;.NEXTVAL =&gt; 현재 시퀀스의 다음 증가값 반환</span><br><span class="line">&quot;시퀀스&quot;.CURRVAL =&gt; 현재 시퀀스 값 반환</span><br><span class="line"></span><br><span class="line">ㆍSTART WITH : 시작값 지정</span><br><span class="line">ㆍINCREMENT BY : 연속적인 증가치 지정</span><br><span class="line">ㆍMAXVALUE: 가질 수 있는 최대값 지정</span><br><span class="line">ㆍMINVALUE : 가질 수 있는 최소값 지정</span><br><span class="line">ㆍCYCLE: 지정된 최대값까지 증가되면 START WITH 로 지정한 시작값에서 다시 시작</span><br><span class="line">   ※ NOCYCLE : 최대값까지 증가가 완료되면 에러 발생</span><br><span class="line">ㆍCACHE : 메모리상의 시퀀스값 관리, 기본값은 20 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">시퀀스 삭제</span><br><span class="line">DROP SEQUENCE &quot;시퀀스&quot;</span><br><span class="line"></span><br><span class="line">시퀀스 수정</span><br><span class="line">ALTER SEQUENCE &quot;시퀀스&quot; &quot;변경할 속성&quot; &quot;숫자&quot;</span><br><span class="line">※ 시작숫자(START WITH)는 변경할 수 없음, 시퀀스를 새로 생성해야만 함</span><br></pre></td></tr></table></figure></p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2019/11/01/old/2018-11-01-SvnToGit/" itemprop="url">SVN 을 GIT 으로 이관하기 (git svn)</a>
         
     </h1>
@@ -568,55 +612,6 @@ SELECT ADD_MONTHS(SYSDATE, 1) FROM DUAL -- 현자 날짜 기준으로 1달 더�
 --INTERVAL 숫자 기반 확인이 필요함
 SELECT SYSDATE + (INTERVAL '1' YEAR) FROM DUAL       --1년 더하기
 </pre>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2018-11-21-OracleMysql/" itemprop="url">oracle 명령어와 동일한 mysql 명령어</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.085Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <h1 id="1-공백치환-함수-NVL-gt-IFNULL"><a href="#1-공백치환-함수-NVL-gt-IFNULL" class="headerlink" title="1. 공백치환 함수 ( NVL -&gt; IFNULL )"></a>1. 공백치환 함수 ( NVL -&gt; IFNULL )</h1><p>Oracle : SELECT NVL(‘컬럼명’, ‘’) FROM DUAL;<br>MySql : SELECT IFNULL(‘컬럼명’, ‘’) FROM DUAL;</p>
-<hr>
-<h1 id="2-현재-날짜시간"><a href="#2-현재-날짜시간" class="headerlink" title="2. 현재 날짜시간"></a>2. 현재 날짜시간</h1><p>Oracle : SYSDATE<br>Mysql  : NOW() </p>
-<hr>
-<h1 id="3-날짜포멧"><a href="#3-날짜포멧" class="headerlink" title="3. 날짜포멧"></a>3. 날짜포멧</h1><p>Oracle : TO_CHAR(sysdate,’MMDDYYYYHH24MISS’)<br>Mysql  : DATE_FORMAT(now(),’%Y%m%d%H%i%s’)  -&gt; 여기서 대문자Y는 4자리 년도, 소문자 y는 2자리 년도</p>
-<hr>
-<h1 id="4-날짜-포멧-요일"><a href="#4-날짜-포멧-요일" class="headerlink" title="4. 날짜 포멧 : 요일"></a>4. 날짜 포멧 : 요일</h1><p>Oracle : 요일이 1<del>7로 인식함  -&gt; TO_CHAR(SYSDATE - 1, ‘D’)<br>Mysql : 요일이 0</del>6으로 인식   -&gt; DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 DAY), ‘%w’)</p>
-<hr>
-<h1 id="5-Like절-‘-’-사용법"><a href="#5-Like절-‘-’-사용법" class="headerlink" title="5. Like절 ‘%’ 사용법"></a>5. Like절 ‘%’ 사용법</h1><p>Oracle : Like ‘%’||’문자’||’%’ 이런식으로 컬럼명 앞뒤로 ‘%’<br>Mysql : LIKE CONCAT(‘문자’,’%’) 이런식으로 CONCAT 함수 사용</p>
-<hr>
-<h1 id="6-형변환"><a href="#6-형변환" class="headerlink" title="6. 형변환"></a>6. 형변환</h1><p>Oracle : To_char, To_number 등<br>Mysql : CAST  </p>
-<h2 id="71"><a href="#71" class="headerlink" title="71"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Value       Description</span><br><span class="line">DATE	    Converts value to DATE. Format: &quot;YYYY-MM-DD&quot;</span><br><span class="line">DATETIME    Converts value to DATETIME. Format: &quot;YYYY-MM-DD HH:MM:SS&quot;</span><br><span class="line">TIME	    Converts value to TIME. Format: &quot;HH:MM:SS&quot;</span><br><span class="line">CHAR	    Converts value to CHAR (a fixed length string)</span><br><span class="line">SIGNED	    Converts value to SIGNED (a signed 64-bit integer)</span><br><span class="line">UNSIGNED    Converts value to UNSIGNED (an unsigned 64-bit integer)</span><br><span class="line">BINARY	    Converts value to BINARY (a binary string)</span><br></pre></td></tr></table></figure></h2><h1 id="7-ROWNUM"><a href="#7-ROWNUM" class="headerlink" title="7. ROWNUM"></a>7. ROWNUM</h1><p>Oracle : where 절에 rownum &gt; 5 and rownum =&lt; 10<br>Mysql : where절 없이 limit 5,10</p>
-<hr>
-<h1 id="8-Sequence-시퀀스-는-둘-다-사용자함수를-만들어서-아래와-같이-사용"><a href="#8-Sequence-시퀀스-는-둘-다-사용자함수를-만들어서-아래와-같이-사용" class="headerlink" title="8. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용"></a>8. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용</h1><p>Oracle : 시퀀스명.nextval<br>Mysql : 시퀀스명.currval</p>
-<hr>
-<h1 id="9-문자열-자르기"><a href="#9-문자열-자르기" class="headerlink" title="9. 문자열 자르기"></a>9. 문자열 자르기</h1><p>Oracle: SUBSTR(문자열, 1, 10)<br>Mysql: SUBSTRING(문자열, 1,10), LEFT(문자열, 3), RIGHT(문자열, 3)</p>
-<hr>
-<h1 id="10-문자열-합치기"><a href="#10-문자열-합치기" class="headerlink" title="10. 문자열 합치기"></a>10. 문자열 합치기</h1><p>Oracle: 문자열(또는 컬럼) || ‘’<br>Mysql: CONCAT(문자열(또는 컬럼), ‘’)</p>
 
     
     </div>
