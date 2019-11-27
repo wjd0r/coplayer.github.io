@@ -116,6 +116,85 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2019/11/01/old/2018-05-29-Oracle/" itemprop="url">Oracle 관련</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.090Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h2 id="DDL-Data-Definition-Language"><a href="#DDL-Data-Definition-Language" class="headerlink" title="DDL(Data Definition Language)"></a>DDL(Data Definition Language)</h2><ol>
+<li>컬럼 관련<br>컬럼 추가 - ALTER TABLE 테이블 ADD(컬럼명 VARCHAR2(100));<br>이름 변경 - ALTER TABLE 테이블 RENAME COLUMN 컬러명 TO 변경컬럼명;<br>타입 변경 - ALTER TABLE 테이블 MODIFY(컬럼명 VARCHAR2(50));</li>
+</ol>
+<ol start="2">
+<li>SYNONYM<br>오라클의 객체 (테이블 , 뷰 , 시퀀스 , 프로시져 등)에 대체 이름(Alias)를 의미함<br>생성 - CREATE 대체할 이름  FOR 원래이름;<br>확인 - SELECT * FROM ALL_SYNONYMS WHERE SYSNOYM_NAME = ‘SYNONYM 이름’;<br>삭제 - DROP SYNONYM [SYNONYM 이름];</li>
+</ol>
+<hr>
+<h2 id="DML-Data-manipulation-language"><a href="#DML-Data-manipulation-language" class="headerlink" title="DML(Data manipulation language)"></a>DML(Data manipulation language)</h2><h3 id="1-RAISE-APPLICATION-ERROR"><a href="#1-RAISE-APPLICATION-ERROR" class="headerlink" title="1. RAISE_APPLICATION_ERROR"></a>1. RAISE_APPLICATION_ERROR</h3><p>오라클 저장함수 RAISE_APPLICATION_ERROR를 사용하여 오류코드 -20000부터 -20999의 범위 내에서 사용자 정의 예외를 만들수 있다.</p>
+<ul>
+<li><p>STEP 1 : 예외의 이름을 선언 (선언절)</p>
+</li>
+<li><p>STEP 2 : RAISE문을 사용하여 직접적으로 예외를 발생시킨다(실행절)</p>
+</li>
+<li><p>STEP 3 : 예외가 발생할 경우 해당 예외를 참조한다(예외절)</p>
+</li>
+</ul>
+<pre>
+
+USER_DEFINED_EXCEPTION    EXCEPTION;   -- STEP1
+
+--특정 조건에서 에러를 발생시킴
+RAISE USER_DEFINE_ERROR;               -- STEP 2 
+
+RAISE_APPLICATION_ERROR (-20001 ~ -20999 중에 정의 ,메세지를 정의); --SETP 3
+</pre>
+
+<h3 id="2-날짜관련"><a href="#2-날짜관련" class="headerlink" title="2. 날짜관련"></a>2. 날짜관련</h3><p>1) TO_CHAR : 숫자나 날짜를 문자로 변환해 주는 함수가 바로 TO_CHAR로, 매개변수로는 숫자나 날짜가 올 수 있고 반환 결과를 특정 형식에 맞게 출력할 수 있다.</p>
+<pre>
+SELECT TO_CHAR(SYSDATE, 'YYYYMMDD') FROM DUAL --YYYYMMDD 형식
+SELECT TO_CHAR(123456789, '999,999,999') FROM DUAL -- 숫자 3자리 마다 컴마
+SELECT TO_CHAR(123456789, '999.999.999') FROM DUAL -- 숫자 3자리 마다 점
+SELECT TO_CHAR(123, 'RN') FROM DUAL --숫자 로마숫자로 변환
+</pre>
+
+<p>2) TO_DATE : 문자를 날짜형으로 변환하는 함수</p>
+<pre>
+SELECT TO_DATE('20180424' ,'YYYYMMDD') FROM DUAL; -- 문자를 date 형으로 변환
+SELECT TO_DATE('20180424' ,'YYYY-MM-DD') FROM DUAL
+</pre>
+
+<p>3) 날짜 연산</p>
+<pre>
+SELECT SYSDATE + 1 FROM DUAL -- 현재 날짜 기준으로 1일 더하기
+SELECT ADD_MONTHS(SYSDATE, 1) FROM DUAL -- 현자 날짜 기준으로 1달 더하기
+
+--INTERVAL 숫자 기반 확인이 필요함
+SELECT SYSDATE + (INTERVAL '1' YEAR) FROM DUAL       --1년 더하기
+</pre>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2019/11/01/old/2018-11-21-OracleMysql/" itemprop="url">oracle 명령어와 동일한 mysql 명령어</a>
         
     </h1>
@@ -144,7 +223,7 @@
 <h1 id="5-Like절-‘-’-사용법"><a href="#5-Like절-‘-’-사용법" class="headerlink" title="5. Like절 ‘%’ 사용법"></a>5. Like절 ‘%’ 사용법</h1><p>Oracle : Like ‘%’||’문자’||’%’ 이런식으로 컬럼명 앞뒤로 ‘%’<br>Mysql : LIKE CONCAT(‘문자’,’%’) 이런식으로 CONCAT 함수 사용</p>
 <hr>
 <h1 id="6-형변환"><a href="#6-형변환" class="headerlink" title="6. 형변환"></a>6. 형변환</h1><p>Oracle : To_char, To_number 등<br>Mysql : CAST  </p>
-<h2 id="67"><a href="#67" class="headerlink" title="67"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Value       Description</span><br><span class="line">DATE	    Converts value to DATE. Format: &quot;YYYY-MM-DD&quot;</span><br><span class="line">DATETIME    Converts value to DATETIME. Format: &quot;YYYY-MM-DD HH:MM:SS&quot;</span><br><span class="line">TIME	    Converts value to TIME. Format: &quot;HH:MM:SS&quot;</span><br><span class="line">CHAR	    Converts value to CHAR (a fixed length string)</span><br><span class="line">SIGNED	    Converts value to SIGNED (a signed 64-bit integer)</span><br><span class="line">UNSIGNED    Converts value to UNSIGNED (an unsigned 64-bit integer)</span><br><span class="line">BINARY	    Converts value to BINARY (a binary string)</span><br></pre></td></tr></table></figure></h2><h1 id="7-ROWNUM"><a href="#7-ROWNUM" class="headerlink" title="7. ROWNUM"></a>7. ROWNUM</h1><p>Oracle : where 절에 rownum &gt; 5 and rownum =&lt; 10<br>Mysql : where절 없이 limit 5,10</p>
+<h2 id="60"><a href="#60" class="headerlink" title="60"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Value       Description</span><br><span class="line">DATE	    Converts value to DATE. Format: &quot;YYYY-MM-DD&quot;</span><br><span class="line">DATETIME    Converts value to DATETIME. Format: &quot;YYYY-MM-DD HH:MM:SS&quot;</span><br><span class="line">TIME	    Converts value to TIME. Format: &quot;HH:MM:SS&quot;</span><br><span class="line">CHAR	    Converts value to CHAR (a fixed length string)</span><br><span class="line">SIGNED	    Converts value to SIGNED (a signed 64-bit integer)</span><br><span class="line">UNSIGNED    Converts value to UNSIGNED (an unsigned 64-bit integer)</span><br><span class="line">BINARY	    Converts value to BINARY (a binary string)</span><br></pre></td></tr></table></figure></h2><h1 id="7-ROWNUM"><a href="#7-ROWNUM" class="headerlink" title="7. ROWNUM"></a>7. ROWNUM</h1><p>Oracle : where 절에 rownum &gt; 5 and rownum =&lt; 10<br>Mysql : where절 없이 limit 5,10</p>
 <hr>
 <h1 id="8-Sequence-시퀀스-는-둘-다-사용자함수를-만들어서-아래와-같이-사용"><a href="#8-Sequence-시퀀스-는-둘-다-사용자함수를-만들어서-아래와-같이-사용" class="headerlink" title="8. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용"></a>8. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용</h1><p>Oracle : 시퀀스명.nextval<br>Mysql : 시퀀스명.currval</p>
 <hr>
@@ -434,7 +513,7 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <h2 id="1-시스템의-메모리-정보-파일-출력"><a href="#1-시스템의-메모리-정보-파일-출력" class="headerlink" title="1. 시스템의 메모리 정보 파일 출력"></a>1. 시스템의 메모리 정보 파일 출력</h2><h2 id="72"><a href="#72" class="headerlink" title="72"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/meminfo</span><br></pre></td></tr></table></figure></h2><h2 id="2-시스템-프로세스-상세-내용보기"><a href="#2-시스템-프로세스-상세-내용보기" class="headerlink" title="2. 시스템 프로세스 상세 내용보기"></a>2. 시스템 프로세스 상세 내용보기</h2><ul>
+        <h2 id="1-시스템의-메모리-정보-파일-출력"><a href="#1-시스템의-메모리-정보-파일-출력" class="headerlink" title="1. 시스템의 메모리 정보 파일 출력"></a>1. 시스템의 메모리 정보 파일 출력</h2><h2 id="66"><a href="#66" class="headerlink" title="66"></a><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/meminfo</span><br></pre></td></tr></table></figure></h2><h2 id="2-시스템-프로세스-상세-내용보기"><a href="#2-시스템-프로세스-상세-내용보기" class="headerlink" title="2. 시스템 프로세스 상세 내용보기"></a>2. 시스템 프로세스 상세 내용보기</h2><ul>
 <li>윈도우의 작업 관리자와 비슷한 형태를 띈다.<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure></li>
 <li>출력 내용 상세 설명  </li>
 </ul>
@@ -564,69 +643,6 @@ assertNotNull(a)    a객체가 Null이 아님을 확인한다.
 
 
     
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2018-05-29-lombok/" itemprop="url">lombok</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.051Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <p>Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.</p>
-<p>Project lombok 에 나와 있는 문장 중에 일부 이다. 그만큼 반복해서 선언 또는 코딩해야 하는 부분을 크게 축약하여 준다.</p>
-<p>Java의 Sring Framework에서 DTO(Data Transfer Ojbect),  VO(Value Object), Entity 관련 클래스에서 중복으로 사용해야하는 코드를 Annotaion 선언으로 대신 하도록 해주는 플러그 인이다.</p>
-<h3 id="Annotation"><a href="#Annotation" class="headerlink" title="Annotation"></a>Annotation</h3><pre>
-@Getter/Setter - 선언된 변수를 getter, setter로 선언해 준다.
-
-@toString - toString 생성
-
-@EqualsAndHashCode Equals,HashCode 생성
-
-@NoArgsConstructor 파라미터가 없는 기본 생성자
-
-@AllArgsConstructor 모든 필드 값을 파라미터로 받는 생성자
-@RequiredArgsConstructor final이나 @NonNull인 필드 값만 파라미터로 받는 생성자
-
-@Builder - BuilderPattern 적용
-
-@Log - private static final logger 객체 생성
-
-@Data - getter, setter, toString, hasCode, equals, requiredArgsConstructor 를 한번에 생성
-</pre>
-
-<p>좋은 플러그인인 만큼 실무에서는 보수적으로 사용하기를 요하는 글들이 보인다.  <a href="http://kwonnam.pe.kr/wiki/java/lombok/pitfall" target="_blank" rel="noopener">주의사항</a>을 참고하자. 뭐 이정도면 거의 안쓰는 수준이지만 getter와 setter만이라도 심플해진다.</p>
-<hr>
-<p>참고한 페이지</p>
-<ul>
-<li><a href="https://projectlombok.org/" target="_blank" rel="noopener">Projectlombok</a></li>
-<li><a href="http://using.tistory.com/71" target="_blank" rel="noopener">BuilderPattern</a> </li>
-<li><a href="http://tomining.tistory.com/180" target="_blank" rel="noopener">http://tomining.tistory.com/180</a></li>
-<li><a href="http://wonwoo.ml/index.php/post/1607" target="_blank" rel="noopener">http://wonwoo.ml/index.php/post/1607</a></li>
-<li><a href="http://www.daleseo.com/lombok-popular-annotations/" target="_blank" rel="noopener">http://www.daleseo.com/lombok-popular-annotations/</a></li>
-</ul>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
     
         
 <nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
@@ -645,6 +661,8 @@ assertNotNull(a)    a객체가 Null이 아님을 확인한다.
         <li><a class="pagination-link is-current" href="/page/3/">3</a></li>
         
         <li><a class="pagination-link" href="/page/4/">4</a></li>
+        
+        <li><a class="pagination-link" href="/page/5/">5</a></li>
         
     </ul>
 </nav>
