@@ -116,6 +116,39 @@
         <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
+            <a href="/2019/11/01/old/2018-08-21-CrossOrigin/" itemprop="url">CrossOrigin REST API 서버 분리하기</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-11-01T05:46:59.105Z" itemprop="datePublished">Nov 1 2019</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Old/">Old</a>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="CrossOrigin"><a href="#CrossOrigin" class="headerlink" title="CrossOrigin"></a>CrossOrigin</h1><p>front와 rest api를 분리하여 사용하는 경우 crossdomain 문제가 발생하게 된다. header에 Access-Control-Allow-Origin 을 선언해 주어 서로 다른 서버의 간의 api통신을 가능하도록 하였다. http protocal 에 대한 이해가 심층 적으로 필요하다.</p>
+<p><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="hljs-keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SimpleCORSFilter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest req, ServletResponse res, FilterChain chain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line"></span><br><span class="line">    	HttpServletResponse response = (HttpServletResponse) res;</span><br><span class="line"></span><br><span class="line">        response.setHeader(<span class="hljs-string">"Access-Control-Allow-Methods"</span>, <span class="hljs-string">"POST, GET, PUT, DELETE"</span>);</span><br><span class="line">        response.setHeader(<span class="hljs-string">"Access-Control-Max-Age"</span>, <span class="hljs-string">"3600"</span>);</span><br><span class="line">        response.setHeader(<span class="hljs-string">"Access-Control-Allow-Headers"</span>, <span class="hljs-string">"x-requested-with, origin, content-type, accept"</span>); </span><br><span class="line">        response.setHeader(<span class="hljs-string">"Access-Control-Allow-Origin"</span>, <span class="hljs-string">"*"</span>);</span><br><span class="line">        </span><br><span class="line">        chain.doFilter(req, response);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(FilterConfig filterConfig)</span> </span>&#123;&#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
             <a href="/2019/11/01/old/2018-05-29-Oracle/" itemprop="url">Oracle 관련</a>
         
     </h1>
@@ -569,69 +602,6 @@ SELECT SYSDATE + (INTERVAL '1' YEAR) FROM DUAL       --1년 더하기
 <p>(2) Cookie 변수의 암호화 및 입력값 검증<br>만일 Cookie 변수에 데이터를 저장하여 전송할 필요가 있는 경우, 해당 정보가 인증 및 권한 등 중요한 정보일 경우 평문으로 사용해서는 안되며 반드시 SEED, 3DES, AES등 공인된 암호화 알고리즘을 사용하여 정보를 암호화한 후 사용해야 한다.<br>또한, 중요한 정보가 아니라고 해도, Cookie 변수를 통해서 전달되는 변수값은 GET/POST 파라미터 변수와 마찬가지로 SQL Injection, XSS, 파라미터 조작 등과 같은 공격에 영향을 받기 때문에 각각의 취약점을 방어하기 위한 적절한 입력값 검증이 수행되어야 한다.</p>
 <p>Cookie 변수로 전달된 값이 DB와 연동하는 로직으로 전달되어 사용되는 경우 반드시 SQL Injection 공격을 차단하기 위한 대응책을 적용해야 함<br>Cookie 로 전달되는 변수가 장바구니, 결재 모듈 등 웹사이트의 중요한 로직에서 사용되는 경우, 변수의 변조 가능성에 대비한 적절한 유효성 검증이 수행되어야 함</p>
 <p>출처-<br><a href="http://wikisecurity.net/guide:jsp_%EA%B0%9C%EB%B0%9C_%EB%B3%B4%EC%95%88_%EA%B0%80%EC%9D%B4%EB%93%9C" target="_blank" rel="noopener">http://wikisecurity.net/guide:jsp_%EA%B0%9C%EB%B0%9C_%EB%B3%B4%EC%95%88_%EA%B0%80%EC%9D%B4%EB%93%9C</a></p>
-
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2019/11/01/old/2018-05-29-Junit/" itemprop="url">JUnit</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2019-11-01T05:46:59.066Z" itemprop="datePublished">Nov 1 2019</time>
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/Old/">Old</a>
-        </span>
-        
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <ul>
-<li>Unit Testing Framework</li>
-<li>Java 언어의 테스트를 위해서 사용함 (CUnit,PyUnit 등 언어별 지원)</li>
-<li>TDD (Test-Driven Development) 방법론에 활용되는 대표적인 Framework</li>
-<li>Github - <a href="https://github.com/junit-team" target="_blank" rel="noopener">https://github.com/junit-team</a></li>
-<li>Junit4 로 작성 (작성일 기준 Juint5 가 최신 2018.04.30)</li>
-</ul>
-<hr>
-<h3 id="Annotation"><a href="#Annotation" class="headerlink" title="Annotation"></a>Annotation</h3><p>Junit4 Doc - <a href="https://junit.org/junit4/javadoc/latest/index.html" target="_blank" rel="noopener">https://junit.org/junit4/javadoc/latest/index.html</a></p>
-<pre>
-@Test   //테스트 메소드
-@Before //테스트 전 호출
-@After  //테스트 후 호출
-@BeforeClass //테스트 전 1회만
-@AfterClass  //테스트 후 1회만
-@Ignore //테스트에서 무시
-</pre>
-
-<hr>
-<h3 id="assert-Method"><a href="#assert-Method" class="headerlink" title="assert Method"></a>assert Method</h3><ul>
-<li>Junit doc - <a href="http://junit.sourceforge.net/javadoc/org/junit/Assert.html" target="_blank" rel="noopener">http://junit.sourceforge.net/javadoc/org/junit/Assert.html</a><pre>
-assertArrayEquals(a,b)    배열 a와b가 일치함을 확인한다.
-assertEquals(a,b)    객체 a와b의 값이 같은지 확인한다.
-assertSame(a,b)            객체 a와b가 같은 객체임을 확인한다.
-assertTrue(a)            a가 참인지 확인한다.
-assertFalse(a)            a가 거짓인지 확인한다.
-assertNotNull(a)    a객체가 Null이 아님을 확인한다.
-</pre>
-
-
-</li>
-</ul>
 
     
     </div>
